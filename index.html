@@ -5,7 +5,7 @@
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="LandonPET's World!">
-	<meta name="twitter:description" content='helooooo im landonpetttt blwehhhh'>
+	<meta name="twitter:description" content='helooooo im landonpetttt blwehhhh i lov kinitopett'>
 	<meta name="twitter:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
     <title>LandonPET's World! (W.I.P)</title>
     <link rel='preload' href='assets/images/OSbg2K.jpg' as='image'>
@@ -21,9 +21,6 @@
     <link rel='preload' href='assets/fonts/FontN.otf' as='font' type='font/otf' crossorigin='anonymous'>
     <link rel='preload' href='assets/fonts/FontB.otf' as='font' type='font/otf' crossorigin='anonymous'>
     <link rel='preload' href='assets/fonts/tahoma08pt.otf' as='font' type='font/otf' crossorigin='anonymous'>
-    <link rel='preload' href='assets/sounds/AmbientLoopLP2.mp3' as='audio' type='audio/mpeg'>
-    <link rel='preload' href='assets/sounds/osstartup.mp3' as='audio' type='audio/mpeg'>
-    <link rel='preload' href='assets/sounds/windowtext.mp3' as='audio' type='audio/mpeg'>
 
     <style>
         @font-face {
@@ -280,7 +277,7 @@
     var appspace = document.getElementById('appspace')
     var appsdisplay = document.getElementById('appsdisplay')
     var focusedwindow = false
-    audioCtx.onstatechange = async () => {
+    document.addEventListener('mousedown', async function(event) {
         if (started == false) {
             if (audioCtx.state === 'running') {
                 document.getElementById('starttext').remove()
@@ -297,8 +294,6 @@
                 }, 6000);
             }
         }
-    };
-    document.addEventListener('mousedown', function(event) {
   mousedown.play()
 });
 
