@@ -1,21 +1,462 @@
 <!DOCTYPE html>
 <head>
+    <link rel="icon" type="image/x-icon" href='https://www.landonpet.com/assets/images/LandonPETicon.png'>
+  <meta property="og:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="LandonPET's World!">
+	<meta name="twitter:description" content='helooooo im landonpetttt blwehhhh'>
+	<meta name="twitter:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
+    <title>LandonPET's World! (W.I.P)</title>
+    <link rel='preload' href='assets/images/OSbg2K.jpg' as='image'>
+    <link rel='preload' href='assets/images/OperatingSystemMainButton.png' as='image'>
+    <link rel='preload' href='assets/images/windowborder.png' as='image'>
+    <link rel='preload' href='assets/images/windowbuttons.png' as='image'>
+    <link rel='preload' href='assets/images/LandonPETicon.gif' as='image'>
+    <link rel='preload' href='assets/images/LandonPETicon.png' as='image'>
+    <link rel='preload' href='assets/images/apptaskbar.png' as='image'>
+    <link rel='preload' href='assets/images/apptaskbarhover.png' as='image'>
+    <link rel='preload' href='assets/images/apptaskbarunfocused.png' as='image'>
+    <link rel='preload' href='assets/images/apptaskbarunfocusedhover.png' as='image'>
+    <link rel='preload' href='assets/fonts/FontN.otf' as='font' type='font/otf' crossorigin='anonymous'>
+    <link rel='preload' href='assets/fonts/FontB.otf' as='font' type='font/otf' crossorigin='anonymous'>
+    <link rel='preload' href='assets/fonts/tahoma08pt.otf' as='font' type='font/otf' crossorigin='anonymous'>
+    <link rel='preload' href='assets/sounds/AmbientLoopLP2.mp3' as='audio' type='audio/mpeg'>
+    <link rel='preload' href='assets/sounds/osstartup.mp3' as='audio' type='audio/mpeg'>
+    <link rel='preload' href='assets/sounds/windowtext.mp3' as='audio' type='audio/mpeg'>
+
     <style>
-        body {
+        @font-face {
+            font-family: FontN;
+            src: url(assets/fonts/FontN.otf);
+        }
+        @font-face {
+            font-family: FontB;
+            src: url(assets/fonts/FontB.otf);
+        }
+        @font-face {
+            font-family: Tahoma08;
+            src: url(assets/fonts/tahoma08pt.otf);
+        }
+        html, body {
+            background-color: black;
+            margin: 0;
+            overflow:hidden
+        }
+        .desktop {
+            background-image: url(assets/images/OSbg2K.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .window {
+            position: absolute;
+            background-color: #ff7bff;
+            transition: scale 0.4s cubic-bezier(0.0, 1, 0.5, 1), translate 0.4s cubic-bezier(0.05, 1, 0.0, 1);
+        }
+        .minimizingwindow {
+            transition: scale 0.25s cubic-bezier(0, 1, 0.58, 1), translate 0.25s ease-out;
+            scale: 0;
+            translate: 0 300px;
+        }
+        .closingwindow {
+            transition: transform 0.25s linear;
+            transform: scaleX(0)
+        }
+        .windowborder {
+            border-style: solid;
+            border-width: 26px 7px 10px 6px;
+            -moz-border-image: url(assets/images/windowborder.png) 26 7 10 6 stretch stretch;
+            -webkit-border-image: url(assets/images/windowborder.png) 26 7 10 6 stretch stretch;
+            -o-border-image: url(assets/images/windowborder.png) 26 7 10 6 stretch stretch;
+            border-image: url(assets/images/windowborder.png) 26 7 10 6 stretch stretch;
+        }
+        .appicons {
+            display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100vh;
+  gap: 10px;
+  padding: 10px;
+        }
+        .appicon {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 110px;
+            width: 125px;
+            background-color: #ff7bff00;
+            padding: 0;
             margin: 0;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff00;
+        }
+        .appicon:hover {
+            background-color: #ff7bff10;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff40;
+        }
+        .appicon:focus {
+            background-color: #ff7bff50;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff80;
+        }
+        .appicon:active {
+            background-color: #ff7bff70;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bffA0;
+        }
+        .appicontitle {
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: unset;
+            text-shadow: -1px 2px 2px #000000;
             text-align: center;
-            background-color: black;
+            width: 100%;
+            height: 50px;
+        }
+        .appheader {
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: unset;
+            font-family: FontB;
+            position: absolute;
+            color: #ece9d8;
+            font-size: 11px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+        .Xbutton {
+            width: 15px;
+            height: 13px;
+            border-style: none;
+            background-image: url(assets/images/windowbuttons.png);
+            background-repeat: no-repeat;
+        }
+        .Xbutton:active {
+            background-position: -15px 0px;
+        }
+        .Mbutton {
+            width: 15px;
+            height: 13px;
+            border-style: none;
+            background-image: url(assets/images/windowbuttons.png);
+            background-repeat: no-repeat;
+            background-position: 0px -13px;
+        }
+        .Mbutton:active {
+            background-position: -15px -13px;
+        }
+        .unselectable {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+        .mainbutton {
+            background-image: url('assets/images/OperatingSystemMainButton.png');
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            width: 97px;
+            height: 33px;
+            border-style: none;
+            background-color: #ff7bff00;
+        }
+        .apptaskbar {
+            background-color: #ff7bff;
+            background-image: url(assets/images/apptaskbarunfocused.png);
+            height: 25px;
+            overflow: hidden;
+            position: relative;
+            transition: width 0.2s ease-out;
+            width: auto;
+        }
+        .apptaskbarf {
+            background-color: #ff7bff;
+            background-image: url(assets/images/apptaskbar.png);
+            height: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        .apptaskbarf svg {
+            margin-top: 1px;
+            margin-left: 1px;
+        }
+        .apptaskbarf img {
+            margin-top: 1px;
+            margin-left: 1px;
+        }
+        .apptaskbar:hover {
+            background-image: url(assets/images/apptaskbarunfocusedhover.png);
+        }
+        .apptaskbar:hover div {
+            background-image: url(assets/images/apptaskbarunfocusedhover.png);
+        }
+        .apptaskbar:active {
+            background-image: url(assets/images/apptaskbar.png);
+        }
+        .apptaskbar:active div {
+            background-image: url(assets/images/apptaskbar.png);
+        }
+        .apptaskbarf:hover {
+            background-image: url(assets/images/apptaskbarhover.png);
+        }
+        .apptaskbarf:hover div {
+            background-image: url(assets/images/apptaskbarhover.png);
+        }
+        .appsdisplay {
+            display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+        } 
+        .startupbar {
+            transition: height 3s ease-in;
         }
     </style>
 </head>
 <html>
 <body>
-<img class='LandonPETicon' src='LandonPETicon.png'>
-<h1 style='color: white; font-family: monospace;'>Hello World!</h1>
+    <div id='starttext' style='position: absolute; width: 100vw; height: 100vh; z-index: 1999999; color: rgba(255, 255, 255, 0.25); font-family: FontN; font-size: 32px; text-align: center; top:50%'>click to Start</div>
+    <div id='topstartupbar' class='startupbar' style='background-color: black; position: absolute; width: 100vw; height: 50vh; z-index: 199999;'></div>
+    <div id='bottomstartupbar' class='startupbar' style='background-color: black; position: absolute; width: 100vw; height: 50vh; bottom: 0; z-index: 199999;'></div>
+<div class='desktop' style='width: 100vw; height: 100vh; background-color: #ff7bff;'>
+    <div id='taskbar' style='z-index: 19999; position: relative; top: 100%;'>
+        <button class='mainbutton' style='position: absolute; left: 0; bottom: -2px; z-index: 1;'></button>
+        <div id='appsdisplaycontainer' style='background-image: url("assets/images/OperatingSystemMainButton.png"); width: 100%; height: 30px; background-position: 0px -100px; position: absolute; bottom: 0;'>
+            <div class='appsdisplay' id='appsdisplay' style='width: calc(100% - 180px); height: 25px; background-color: #ff7bff00; left: 104px; position: absolute; top: 3px;'>
+
+            </div>
+            <div id='timedisplay' style='width: 72px; height: 100%; background-image: url("assets/images/OperatingSystemMainButton.png"); position: absolute; right: 0; background-position: 0px -130px;'>
+                <svg width=72px height='20px' style='position:absolute; pointer-events: none;'>
+                    <defs><filter id='crispify'><feComponentTransfer><feFuncA type='discrete' tableValues='0 0 0 0 0 0 0 0 0 1'/></feComponentTransfer></filter></defs>
+                    <text id='systemtimedisplay' filter='url(#crispify)' font-size='11' font-family='Tahoma08' y='16' fill='#ffffff' x='37.2px' text-anchor='middle' dominant-baseline='middle'>5:11 AM</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class='appicons'>
+        <button ondblclick='openapp("testapp")' class='appicon'>
+            <img class='unselectable' src='/assets/images/LandonPETicon.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Hello World!</p>
+        </button>
+        <button style='display: none;' onclick='openapp("testapp")'>test</button>
+    </div>
+    <div id='appspace' style='z-index: 1;'>
+        
+    </div>
+    <audio id='clicksound'>
+        <source src='assets/sounds/Click.ogg' type='audio/mpeg'>
+    </audio>
+    <audio id='ambientloop' loop preload='auto'>
+        <source src='assets/sounds/AmbientLoopLP2.mp3' type='audio/mpeg'>
+    </audio>
+</div>
+<script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var started = false
+    var clicksound = new Audio('assets/sounds/Click.ogg')
+    var ambientloop = document.getElementById('ambientloop')
+    var windowtextsound = new Audio('assets/sounds/windowtext.mp3')
+    var mousedown = new Audio('assets/sounds/MouseDown.wav')
+    var mouseup = new Audio('assets/sounds/MouseUp.wav')
+    var osstartsound = new Audio('assets/sounds/osstartup.mp3')
+    var windowcount = 0
+    var totalwindowcount = 0
+    var appspace = document.getElementById('appspace')
+    var appsdisplay = document.getElementById('appsdisplay')
+    var focusedwindow = false
+    audioCtx.onstatechange = async () => {
+        if (started == false) {
+            if (audioCtx.state === 'running') {
+                document.getElementById('starttext').remove()
+                await new Promise(resolve => setTimeout(resolve, 250))
+                ambientloop.play()
+                osstartsound.play()
+                document.getElementById('topstartupbar').style.height = 0 + 'px'
+                document.getElementById('bottomstartupbar').style.height = 0 + 'px'
+                started = true
+                setTimeout(() => {
+                    openapp('testapp')
+                    document.getElementById('topstartupbar').remove()
+                    document.getElementById('bottomstartupbar').remove()
+                }, 6000);
+            }
+        }
+    };
+    document.addEventListener('mousedown', function(event) {
+  mousedown.play()
+});
+
+document.addEventListener('mouseup', function(event) {
+  mouseup.play()
+});
+
+    async function openapp(appname) {
+        var appdata = await (await fetch('assets/apps/' + appname + '.app')).text()
+        var windowsize = (appdata.split('\n')[0]).split(',');
+        windowsize = { x: Number(windowsize[0]), y: Number(windowsize[1]) }
+        var windowtitle = appdata.split('\n')[1]
+        var windowicon = appdata.split('\n')[2]
+        var data = appdata.split(/\r?\n/).slice(3).join('\n')
+        var windowdata = `
+        <div id='window`+ (totalwindowcount + 1) +`' class='minimizingwindow window unselectable' style='width: ` + windowsize.x + `px; height: ` + windowsize.y + `px; left: 0; top: 0; z-index:` + (windowcount + 1 + 1999) + `' onmousedown='focuswindow(this)'>
+              <button class='Xbutton' style='position: absolute; right: 3px; top: 4px' onclick='closewindow(this.parentNode)'></button>
+                  <button class='Mbutton' style='position: absolute; right: 20px; top: 4px' onclick='minimizewindow(this.parentNode)'></button>
+              <div class='appheader' style='width: calc(100% - 35px); background-color: #ff7bff00; height:20px;' onmousedown='beginwindowdrag(this.parentNode)'>
+                  <svg class='unselectable' width=100% height="20px" style='position:absolute; left: 6px; pointer-events: none;'>
+                      <defs><filter id="crispify"><feComponentTransfer><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/></feComponentTransfer></filter></defs>
+                     <text class='unselectable' filter="url(#crispify)" font-size="11" font-family="FontB" y='16' fill='#ece9d8'>` + windowtitle + `</text>
+                  </svg>
+              </div>
+              <div class='windowborder' style='width: calc(100% - 12px); height: calc(100% - 35px);'>` + data + `</div>
+          </div>
+        `
+        var taskbarwindow = `
+            <div id='taskbarwindow`+ (totalwindowcount + 1) +`' class='apptaskbar apptaskbarf' onclick='taskbarwindowpress(document.getElementById((this.id).substring(7,1999)))'>
+                    <img class='unselectable' src='assets/images/` + windowicon + `' style='width: 16px; height: 16px; position: absolute; left: 10px; top: 4px; image-rendering: pixelated;'>
+                    <svg width=100% height="20px" style='position:absolute; pointer-events: none;'>
+                        <defs><filter id="crispify"><feComponentTransfer><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/></feComponentTransfer></filter></defs>
+                        <text filter="url(#crispify)" font-size="11" font-family="Tahoma08" x='30' y='16' fill='#ffffff'>` + windowtitle + `</text>
+                    </svg>
+                    <div class='apptaskbar apptaskbarf' style='width: 5px; position: relative; left: calc(100% - 5px); top: 0; background-position: -507px 0px;'></div>
+            </div>
+        `
+        appspace.insertAdjacentHTML('beforeend', windowdata);
+        for (const taskbarwindow of appsdisplay.children) {
+            taskbarwindow.classList.remove('apptaskbarf')
+            taskbarwindow.querySelector('div').classList.remove('apptaskbarf')
+        }
+        appsdisplay.insertAdjacentHTML('beforeend', taskbarwindow);
+        var newwindow = appspace.lastElementChild
+        focusedwindow = newwindow
+        var taskbarwindow = appsdisplay.lastElementChild
+        taskbarwindow.style.width = 'auto';
+        const targetWidth = taskbarwindow.scrollWidth + 'px';
+        taskbarwindow.style.width = '0px';
+        taskbarwindow.offsetHeight; 
+        taskbarwindow.style.width = targetWidth;
+        var currentwindowtitle = newwindow.querySelector('.appheader svg text');
+        newwindow.style.left = (((window.innerWidth / 2) - (windowsize.x / 2)) + ((Math.random() * 100) - 50) ) + 'px'
+        newwindow.style.top = (((window.innerHeight / 2) - (windowsize.y / 2)) + ((Math.random() * 100) - 50) ) + 'px'
+        setTimeout(() => {
+            newwindow.classList.toggle('minimizingwindow');
+        }, 10);
+        setTimeout(() => {
+            taskbarwindow.style.width = 'auto'
+        }, 200);
+        var cclicksound = clicksound.cloneNode()
+        cclicksound.play()
+        cclicksound.remove()
+        windowcount = windowcount + 1
+        totalwindowcount = totalwindowcount + 1
+        for (let i = 0; i < windowtitle.length; i++) {
+            currentwindowtitle.textContent = windowtitle.substring(0, i)
+            var cwindowtextsound = windowtextsound.cloneNode()
+            cwindowtextsound.play()
+            cwindowtextsound.remove()
+            await new Promise(resolve => setTimeout(resolve, 50))
+        }
+        //taskbarwindow.style.width = 'max-content'
+        console.log(currentwindowtitle)
+    }
+    function focuswindow(window) {
+        for (const appwindow of appspace.children) {
+            appwindow.style.zIndex = appwindow.style.zIndex - 1
+            console.log(appwindow.style.zIndex)
+        }
+        window.style.zIndex = windowcount + 1999
+        focusedwindow = window
+        for (const taskbarwindow of appsdisplay.children) {
+            taskbarwindow.classList.remove('apptaskbarf')
+            taskbarwindow.querySelector('div').classList.remove('apptaskbarf')
+        }
+        document.getElementById('taskbar' + (window.id)).classList.add('apptaskbarf')
+        document.getElementById('taskbar' + (window.id)).querySelector('div').classList.add('apptaskbarf')
+    }
+    function taskbarwindowpress(window) {
+        if (window.classList.contains('minimizingwindow')) {
+            unminimizewindow(window)
+            focuswindow(window)
+        } else {
+            if (window == focusedwindow) {
+             minimizewindow(window)
+            } else {
+                focuswindow(window)
+            }
+        }
+    }
+    var appstorage = {
+        testapp: {appdataname: 'testapp.app'}
+    }
+</script>
+<script>
+    var draggingwindow = false
+    var mouse = { x: 0, y: 0 };
+    function closewindow(window) {
+        window.classList.toggle('closingwindow');
+        console.log('taskbarwindow' + window.id)
+        document.getElementById('taskbar' + (window.id)).remove()
+        setTimeout(() => {
+            window.remove();
+        }, 250);
+        windowcount = windowcount - 1
+        console.log(windowcount)
+        //window.remove();
+    }
+    function minimizewindow(window) {
+        window.classList.add('minimizingwindow');
+        for (const taskbarwindow of appsdisplay.children) {
+            taskbarwindow.classList.remove('apptaskbarf')
+            taskbarwindow.querySelector('div').classList.remove('apptaskbarf')
+        }
+    }
+    function unminimizewindow(window) {
+        window.classList.remove('minimizingwindow');
+    }
+    function beginwindowdrag(window) {
+        draggingwindow = window
+    }
+    window.addEventListener('mousemove', (event) => {
+        if (draggingwindow != false) {
+            //console.log('bluh')
+            var windowpos = draggingwindow.getBoundingClientRect();
+            //console.log(event.clientX - mouse.x)
+            //console.log(event.clientY - mouse.y)
+            draggingwindow.style.left = windowpos.x + (event.clientX - mouse.x) + 'px'
+            draggingwindow.style.top = windowpos.y + (event.clientY - mouse.y) + 'px'
+            //draggingwindow.style.left = 100 + 'px'
+            //draggingwindow.style.top = 100 + 'px'
+        }
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+    });
+    document.addEventListener("mouseup", function(event) {
+        if (event.button === 0) {
+            draggingwindow = false
+        }
+    });
+</script>
+<script>
+    var systemtimedisplay = document.getElementById('systemtimedisplay')
+    systemtimedisplay.textContent = (new Date()).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true})
+    setInterval(() => {
+        systemtimedisplay.textContent = (new Date()).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true})
+    }, 1000);
+</script>
 </body>
 </html>
