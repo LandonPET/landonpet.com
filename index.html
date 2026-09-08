@@ -279,8 +279,7 @@
     var focusedwindow = false
     document.addEventListener('mousedown', async function(event) {
         if (started == false) {
-            if (audioCtx.state === 'running') {
-                document.getElementById('starttext').remove()
+            document.getElementById('starttext').remove()
                 await new Promise(resolve => setTimeout(resolve, 250))
                 ambientloop.play()
                 osstartsound.play()
@@ -292,7 +291,6 @@
                     document.getElementById('topstartupbar').remove()
                     document.getElementById('bottomstartupbar').remove()
                 }, 6000);
-            }
         }
   mousedown.play()
 });
