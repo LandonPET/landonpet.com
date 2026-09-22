@@ -35,6 +35,10 @@
             font-family: Tahoma08;
             src: url(assets/fonts/tahoma08pt.otf);
         }
+        @font-face {
+            font-family: SourceCodePro;
+            src: url(NitolingSpawner/SourceCodePro-Italic.ttf);
+        }
         html, body {
             background-color: black;
             margin: 0;
@@ -251,6 +255,10 @@
             <img class='unselectable' src='/assets/images/LandonPETicon.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Hello World!</p>
         </button>
+        <button ondblclick='openapp("nitolingspawner")' class='appicon'>
+            <img class='unselectable' src='/assets/images/nitoling.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>nitoling spawner</p>
+        </button>
         <button style='display: none;' onclick='openapp("testapp")'>test</button>
     </div>
     <div id='appspace' style='z-index: 1;'>
@@ -302,12 +310,12 @@ document.addEventListener('mouseup', function(event) {
     async function openapp(appname) {
         var appdata = await (await fetch('assets/apps/' + appname + '.app')).text()
         var windowsize = (appdata.split('\n')[0]).split(',');
-        windowsize = { x: Number(windowsize[0]), y: Number(windowsize[1]) }
+        windowsize = { x: Number(windowsize[0]) + 12, y: Number(windowsize[1]) + 35 }
         var windowtitle = appdata.split('\n')[1]
         var windowicon = appdata.split('\n')[2]
         var data = appdata.split(/\r?\n/).slice(3).join('\n')
         var windowdata = `
-        <div id='window`+ (totalwindowcount + 1) +`' class='minimizingwindow window unselectable' style='width: ` + windowsize.x + `px; height: ` + windowsize.y + `px; left: 0; top: 0; z-index:` + (windowcount + 1 + 1999) + `' onmousedown='focuswindow(this)'>
+        <div id='window`+ (totalwindowcount + 1) +`' class='minimizingwindow window unselectable' style='width: ` + (windowsize.x) + `px; height: ` + windowsize.y + `px; left: 0; top: 0; z-index:` + (windowcount + 1 + 1999) + `' onmousedown='focuswindow(this)'>
               <button class='Xbutton' style='position: absolute; right: 3px; top: 4px' onclick='closewindow(this.parentNode)'></button>
                   <button class='Mbutton' style='position: absolute; right: 20px; top: 4px' onclick='minimizewindow(this.parentNode)'></button>
               <div class='appheader' style='width: calc(100% - 35px); background-color: #ff7bff00; height:20px;' onmousedown='beginwindowdrag(this.parentNode)'>
