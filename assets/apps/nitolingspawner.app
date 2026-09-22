@@ -9,7 +9,7 @@ nitoling.png
         <br>
         <br>
         <div style='width: 100%; display: flex; justify-content: center; align-items: center;'>
-            <a href='NitolingSpawner/index.html'>
+            <a href='NitolingSpawner/'>
             <button style='background-color: #000000; color: white; font-family: SourceCodePro; font-size: 18px;'>Visit main page</button>
             </a>
         </div>
