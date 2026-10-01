@@ -260,15 +260,15 @@
         </div>
     </div>
     <div class='appicons'>
-        <button ondblclick='openapp("testapp")' class='appicon'>
+        <button ondblclick='if (!ismobile) {openapp("testapp")}' ontouchend='openapp("testapp")' class='appicon'>
             <img class='unselectable' src='/assets/images/LandonPETicon.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Hello World!</p>
         </button>
-        <button ondblclick='openapp("nitolingspawner")' class='appicon'>
+        <button ondblclick='if (!ismobile) {openapp("nitolingspawner")}' ontouchend='openapp("nitolingspawner")' class='appicon'>
             <img class='unselectable' src='/assets/images/nitoling.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>nitoling spawner</p>
         </button>
-        <button ondblclick='openapp("minesweeper")' class='appicon'>
+        <button ondblclick='if (!ismobile) {openapp("minesweeper")}' ontouchend='openapp("minesweeper")' class='appicon'>
             <img class='unselectable' src='/assets/images/minehunter.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Minesweeper</p>
         </button>
