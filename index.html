@@ -4,6 +4,7 @@
   <meta property="og:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary">
+    <meta name="viewport" content="width=800, initial-scale=1">
 	<meta name="twitter:title" content="LandonPET's World!">
 	<meta name="twitter:description" content='helooooo im landonpetttt blwehhhh i lov kinitopett'>
 	<meta name="twitter:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
@@ -39,10 +40,17 @@
             font-family: SourceCodePro;
             src: url(NitolingSpawner/SourceCodePro-Italic.ttf);
         }
+        * {
+            touch-action: manipulation;
+        }
         html, body {
             background-color: black;
-            margin: 0;
-            overflow:hidden
+            margin: 00;
+            overflow:hidden;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            height: 100vh;
+            
         }
         .desktop {
             background-image: url(assets/images/OSbg2K.jpg);
@@ -76,7 +84,7 @@
             display: inline-flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 100vh;
+  max-height: 100dvh;
   gap: 10px;
   padding: 10px;
         }
@@ -232,12 +240,13 @@
 </head>
 <html>
 <body>
-    <div id='starttext' style='position: absolute; width: 100vw; height: 100vh; z-index: 1999999; color: rgba(255, 255, 255, 0.25); font-family: FontN; font-size: 32px; text-align: center; top:50%'>click to Start</div>
+    <!--<div id='debugtext' style='position: absolute; color: white; z-index: 1999999; font-size: 100px;'>hi</div>-->
+    <div id='starttext' style='position: absolute; width: 100vw; height: 100dvh; z-index: 1999999; color: rgba(255, 255, 255, 0.25); font-family: FontN; font-size: 32px; text-align: center; top:50%'>click to Start</div>
     <div id='topstartupbar' class='startupbar' style='background-color: black; position: absolute; width: 100vw; height: 50vh; z-index: 199999;'></div>
     <div id='bottomstartupbar' class='startupbar' style='background-color: black; position: absolute; width: 100vw; height: 50vh; bottom: 0; z-index: 199999;'></div>
-<div class='desktop' style='width: 100vw; height: 100vh; background-color: #ff7bff;'>
-    <div id='taskbar' style='z-index: 19999; position: relative; top: 100%;'>
-        <button class='mainbutton' style='position: absolute; left: 0; bottom: -2px; z-index: 1;'></button>
+<div class='desktop' style='width: 100dvw; height: 100dvh; background-color: #ff7bff;'>
+    <div id='taskbar' style='z-index: 19999; position: relative; top: 100dvh;'>
+        <button class='mainbutton' style='position: absolute; left: 0; bottom: -3px; z-index: 1;'></button>
         <div id='appsdisplaycontainer' style='background-image: url("assets/images/OperatingSystemMainButton.png"); width: 100%; height: 30px; background-position: 0px -100px; position: absolute; bottom: 0;'>
             <div class='appsdisplay' id='appsdisplay' style='width: calc(100% - 180px); height: 25px; background-color: #ff7bff00; left: 104px; position: absolute; top: 3px;'>
 
@@ -259,6 +268,10 @@
             <img class='unselectable' src='/assets/images/nitoling.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>nitoling spawner</p>
         </button>
+        <button ondblclick='openapp("minesweeper")' class='appicon'>
+            <img class='unselectable' src='/assets/images/minehunter.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Minesweeper</p>
+        </button>
         <button style='display: none;' onclick='openapp("testapp")'>test</button>
     </div>
     <div id='appspace' style='z-index: 1;'>
@@ -272,6 +285,15 @@
     </audio>
 </div>
 <script>
+    var ismobile = false
+    if (navigator.userAgentData) {
+        if (navigator.userAgentData.mobile == true) {
+            ismobile = true
+        }
+    }
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == true) {
+        ismobile = true
+    }
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var started = false
     var clicksound = new Audio('assets/sounds/Click.ogg')
@@ -295,7 +317,9 @@
                 document.getElementById('bottomstartupbar').style.height = 0 + 'px'
                 started = true
                 setTimeout(() => {
-                    openapp('testapp')
+                    if (windowcount == 0) {
+                        openapp('testapp')
+                    }
                     document.getElementById('topstartupbar').remove()
                     document.getElementById('bottomstartupbar').remove()
                 }, 6000);
@@ -318,7 +342,7 @@ document.addEventListener('mouseup', function(event) {
         <div id='window`+ (totalwindowcount + 1) +`' class='minimizingwindow window unselectable' style='width: ` + (windowsize.x) + `px; height: ` + windowsize.y + `px; left: 0; top: 0; z-index:` + (windowcount + 1 + 1999) + `' onmousedown='focuswindow(this)'>
               <button class='Xbutton' style='position: absolute; right: 3px; top: 4px' onclick='closewindow(this.parentNode)'></button>
                   <button class='Mbutton' style='position: absolute; right: 20px; top: 4px' onclick='minimizewindow(this.parentNode)'></button>
-              <div class='appheader' style='width: calc(100% - 35px); background-color: #ff7bff00; height:20px;' onmousedown='beginwindowdrag(this.parentNode)'>
+              <div class='appheader' style='width: calc(100% - 35px); background-color: #ff7bff00; height:20px;' onpointerdown='beginwindowdrag(this.parentNode)'>
                   <svg class='unselectable' width=100% height="20px" style='position:absolute; left: 6px; pointer-events: none;'>
                       <defs><filter id="crispify"><feComponentTransfer><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 0 0 1"/></feComponentTransfer></filter></defs>
                      <text class='unselectable' filter="url(#crispify)" font-size="11" font-family="FontB" y='16' fill='#ece9d8'>` + windowtitle + `</text>
@@ -352,8 +376,8 @@ document.addEventListener('mouseup', function(event) {
         taskbarwindow.offsetHeight; 
         taskbarwindow.style.width = targetWidth;
         var currentwindowtitle = newwindow.querySelector('.appheader svg text');
-        newwindow.style.left = (((window.innerWidth / 2) - (windowsize.x / 2)) + ((Math.random() * 100) - 50) ) + 'px'
-        newwindow.style.top = (((window.innerHeight / 2) - (windowsize.y / 2)) + ((Math.random() * 100) - 50) ) + 'px'
+        newwindow.style.left = Math.max((((window.innerWidth / 2) - (windowsize.x / 2)) + ((Math.random() * 100) - 50) ), 0) + 'px'
+        newwindow.style.top = Math.max((((window.innerHeight / 2) - (windowsize.y / 2)) + ((Math.random() * 100) - 50) ), 0) + 'px'
         setTimeout(() => {
             newwindow.classList.toggle('minimizingwindow');
         }, 10);
@@ -433,6 +457,7 @@ document.addEventListener('mouseup', function(event) {
         draggingwindow = window
     }
     window.addEventListener('mousemove', (event) => {
+        if (ismobile) return;
         if (draggingwindow != false) {
             //console.log('bluh')
             var windowpos = draggingwindow.getBoundingClientRect();
@@ -446,6 +471,32 @@ document.addEventListener('mouseup', function(event) {
         mouse.x = event.clientX;
         mouse.y = event.clientY;
     });
+    window.addEventListener('touchstart', (event) => {
+        const touch = event.touches[0] 
+        mouse.x = touch.clientX;
+        mouse.y = touch.clientY;
+    })
+    window.addEventListener('touchend', (event) => {
+        const touch = event.touches[0] 
+        draggingwindow = false
+    })
+    window.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0]
+        if (draggingwindow != false) {
+            event.preventDefault()
+            //console.log('bluh')
+            var windowpos = draggingwindow.getBoundingClientRect();
+            //console.log(event.clientX - mouse.x)
+            //console.log(event.clientY - mouse.y)
+            //document.getElementById('debugtext').innerHTML = touch.clientY - mouse.y
+            draggingwindow.style.left = windowpos.x + (touch.clientX - mouse.x) + 'px'
+            draggingwindow.style.top = windowpos.y + (touch.clientY - mouse.y) + 'px'
+            //draggingwindow.style.left = 100 + 'px'
+            //draggingwindow.style.top = 100 + 'px'
+        }
+        mouse.x = touch.clientX;
+        mouse.y = touch.clientY;
+    }, {passive:false});
     document.addEventListener("mouseup", function(event) {
         if (event.button === 0) {
             draggingwindow = false

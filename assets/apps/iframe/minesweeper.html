@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        html, body {
+            margin: 0;
+            overflow: hidden;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .smiley {
+            background-image: url(../../images/minesweeper/Smile.png);
+            width: 26px;
+            height: 26px;
+        }
+        * {
+            touch-action: none;
+        }
+        .smiley:active {
+            background-position: -26px 0px;
+        }
+        .smileystepping {
+            background-position: -52px 0px;
+        }
+        .smileysad {
+            background-position: -78px 0px;
+        }
+        .number {
+            background-image: url(../../images/minesweeper/Time.png);
+            width: 11px;
+            height: 21px;
+        }
+    </style>
+</head>
+<html>
+
+<body oncontextmenu='return false;'>
+    <div id='app' style='width: 275px; height: 316px; background-image: url(../../images/minesweeper/Box.png);'>
+        <canvas id='game' style='width: 255px; height: 255px; background-color: black; position: absolute; left: 10px; top: 52px; image-rendering: pixelated; image-rendering: crisp-edges;'></canvas>
+        <div id='gamebutton' class='smiley' style='position: absolute; left: 121px; top: 12px' onpointerup='startgame()'></div>
+        <div id='mines' style='position: absolute;'>
+            <div id='mine1' style='position: absolute; left: 43px; top: 15px' class='number'></div>
+            <div id='mine2' style='position: absolute; left: 30px; top: 15px' class='number'></div>
+            <div id='mine3' style='position: absolute; left: 17px; top: 15px' class='number'></div>
+        </div>
+        <div id='timer' style='position: absolute;'>
+            <div id='timer1' style='position: absolute; left: 246px; top: 15px' class='number'></div>
+            <div id='timer2' style='position: absolute; left: 233px; top: 15px' class='number'></div>
+            <div id='timer3' style='position: absolute; left: 220px; top: 15px' class='number'></div>
+        </div>
+        <img id='youwin!' src='../../images/minesweeper/YouWin!.gif' style='position: absolute; left: 83px; top: 164px; display: none;'>
+    </div>
+    <!--<t id='debugtext'></t>-->
+    <script>
+        var tilestexture = new Image()
+        var gamecanvas = document.getElementById('game')
+        var gamebutton = document.getElementById('gamebutton')
+        var ctx = gamecanvas.getContext('2d')
+        var youwin = document.getElementById('youwin!')
+        var gamex = 16
+        var gamey = 16
+        var mines = 27
+        var flagsamount = 0
+        var timer = 0
+        var interval
+        var minetable = []
+        var pressedtable = []
+        var flaggedtable = []
+        var hoveredtile = 0
+        var playing = true
+        var holdtimeout
+        var mobileflagged
+        var heldtile
+        var tiletexturemap = {
+            'unpressed': {x: 0, y: 0},
+            0: {x: 16, y: 0},
+            'flagged': {x: 32, y: 0},
+            'unknown': {x: 48, y: 0},
+            'unknownpressed': {x: 64, y: 0},
+            1: {x: 0, y: 16},
+            2: {x: 16, y: 16},
+            3: {x: 32, y: 16},
+            4: {x: 48, y: 16},
+            5: {x: 64, y: 16},
+            6: {x: 80, y: 16},
+            7: {x: 96, y: 16},
+            8: {x: 112, y: 16},
+            'mine': {x: 128, y: 16},
+        }
+        gamecanvas.width = 255
+        gamecanvas.height = 255
+        tilestexture.src = '../../images/minesweeper/Tiles.png'
+        tilestexture.onload = startgame
+
+        function startgame() {
+            mines = Math.floor(25 + (Math.random() * 6))
+            flagsamount = 0
+            document.getElementById('mine1').style.backgroundPosition = -((mines - flagsamount) % 10) * 11 + 'px'
+            document.getElementById('mine2').style.backgroundPosition = -(Math.floor((mines - flagsamount) / 10) % 10) * 11 + 'px'
+            document.getElementById('mine3').style.backgroundPosition = -(Math.floor((mines - flagsamount) / 100) % 10) * 11 + 'px'
+            clearInterval(interval)
+            timer = 0
+            document.getElementById('timer1').style.backgroundPosition = -(timer % 10) * 11 + 'px'
+            document.getElementById('timer2').style.backgroundPosition = -(Math.floor((timer) / 10) % 10) * 11 + 'px'
+            document.getElementById('timer3').style.backgroundPosition = -(Math.floor((timer) / 100) % 10) * 11 + 'px'
+            interval = setInterval(function () {
+                timer = Math.min(timer + 1, 999)
+                document.getElementById('timer1').style.backgroundPosition = -(timer % 10) * 11 + 'px'
+                document.getElementById('timer2').style.backgroundPosition = -(Math.floor((timer) / 10) % 10) * 11 + 'px'
+                document.getElementById('timer3').style.backgroundPosition = -(Math.floor((timer) / 100) % 10) * 11 + 'px'
+            }, 1000)
+            youwin.style.display = 'none'
+            gamebutton.classList.remove('smileysad')
+            for (let i = 0; i <= (gamex * gamey) - 1; i++) {
+                minetable[i] = 0
+                pressedtable[i] = 0
+                flaggedtable[i] = 0
+            }
+            for (let i = 1; i <= mines; i++) {
+                var placed = false
+                while (placed == false) {
+                    var tile = Math.floor(Math.random() * (gamex * gamey))
+                    if (minetable[tile] == 0) {
+                        minetable[tile] = 1
+                        placed = true
+                    }
+                }
+            }
+
+            for (let i = 0; i <= (gamex * gamey) - 1; i++) {
+                drawtile(i, 'unpressed')
+            }
+            playing = true
+        }
+        function drawtile(tile, texture) {
+            var tilepos = gettilepos(tile)
+            var texturepos = tiletexturemap[texture]
+            ctx.drawImage(tilestexture, texturepos.x, texturepos.y, 16, 16, tilepos.x, tilepos.y, 16, 16)
+        }
+        function gettilepos(tile) {
+            var tileposition = {
+                x: (tile % gamex) * 16,
+                y: (Math.floor(tile / 16)) * 16,
+            }
+            return tileposition
+        }
+        gamecanvas.addEventListener('mousemove', function(event) {
+            const rect = gamecanvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            hoveredtile = Math.floor(x / 16) + (Math.floor(y / 16) * gamex)
+            var tileposition = gettilepos(hoveredtile)
+            //console.log('hovered tile: ' + hoveredtile)
+            //console.log('position of hovered tile: ' + tileposition.x + 'x, ' + tileposition.y + 'y')
+        })
+        function win() {
+            console.log('kintoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+            playing = false
+            clearTimeout(holdtimeout)
+            clearInterval(interval)
+            youwin.style.display = 'block'
+        }
+        function lose() {
+            playing = false
+            clearTimeout(holdtimeout)
+            clearInterval(interval)
+            for (let i = 0; i <= (gamex * gamey) - 1; i++) {
+                if (flaggedtable[i] == 0) {
+                    revealtile(i)
+                }
+            }
+            gamebutton.classList.add('smileysad')
+        }
+        function revealtile(tile) {
+            var tiles = {}
+            var minecount = 0
+            if (tile % gamex == 0) {
+                tiles[0] = 'offscreen'
+                tiles[3] = 'offscreen'
+                tiles[5] = 'offscreen'
+            }
+            if (tile % gamex == (gamex - 1)) {
+                tiles[2] = 'offscreen'
+                tiles[4] = 'offscreen'
+                tiles[7] = 'offscreen'
+            }
+            if (tile < gamex) {
+                tiles[0] = 'offscreen'
+                tiles[1] = 'offscreen'
+                tiles[2] = 'offscreen'
+                //console.log('KNTOOOOOOOOOOO')
+            }
+            if (((gamex * gamey) - gamex - 1) < tile) {
+                tiles[5] = 'offscreen'
+                tiles[6] = 'offscreen'
+                tiles[7] = 'offscreen'
+                //console.log('KNTOOOOOOOOOOO')
+            }
+            tiles[0] = (tiles[0] == 'offscreen') ? 'offscreen' : minetable[(tile - gamex) - 1]
+            tiles[1] = (tiles[1] == 'offscreen') ? 'offscreen' : minetable[(tile - gamex)]
+            tiles[2] = (tiles[2] == 'offscreen') ? 'offscreen' : minetable[(tile - gamex) + 1]
+            tiles[3] = (tiles[3] == 'offscreen') ? 'offscreen' : minetable[(tile - 1)]
+            tiles[4] = (tiles[4] == 'offscreen') ? 'offscreen' : minetable[(tile + 1)]
+            tiles[5] = (tiles[5] == 'offscreen') ? 'offscreen' : minetable[(tile + gamex) - 1]
+            tiles[6] = (tiles[6] == 'offscreen') ? 'offscreen' : minetable[(tile + gamex)]
+            tiles[7] = (tiles[7] == 'offscreen') ? 'offscreen' : minetable[(tile + gamex) + 1]
+            for (let i = 0; i <= 7; i++) {
+                if (tiles[i] == 1) {
+                    minecount = minecount + 1
+                }
+            }
+            //console.log(tiles)
+            if (playing == true) {
+                pressedtable[tile] = 1
+            }
+            if (minetable[tile] == 0) {
+                drawtile(tile, minecount)
+            } else {
+                drawtile(tile, 'mine')
+                if (playing == true) {
+                    lose()
+                }
+            }
+            if (playing == true) {
+                if (minecount == 0) {
+                    if (pressedtable[(tile - gamex) - 1] == 0 && tiles[0] !== 'offscreen') { revealtile((tile - gamex) - 1) }
+                    if (pressedtable[(tile - gamex)] == 0 && tiles[1] !== 'offscreen') { revealtile((tile - gamex)) }
+                    if (pressedtable[(tile - gamex) + 1] == 0 && tiles[2] !== 'offscreen') { revealtile((tile - gamex) + 1) }
+                    if (pressedtable[(tile - 1)] == 0 && tiles[3] !== 'offscreen') { revealtile((tile - 1)) }
+                    if (pressedtable[(tile + 1)] == 0 && tiles[4] !== 'offscreen') { revealtile((tile + 1)) }
+                    if (pressedtable[(tile + gamex) - 1] == 0 && tiles[5] !== 'offscreen') { revealtile((tile + gamex) - 1) }
+                    if (pressedtable[(tile + gamex)] == 0 && tiles[6] !== 'offscreen') { revealtile((tile + gamex)) }
+                    if (pressedtable[(tile + gamex) + 1] == 0 && tiles[7] !== 'offscreen') { revealtile((tile + gamex) + 1) }
+                }
+            }
+            
+        }
+        function flag(tile) {
+            if (pressedtable[tile] == 0) {
+                if (flaggedtable[tile] == 0) {
+                    flaggedtable[tile] = 1
+                    drawtile(tile, 'flagged')
+                    flagsamount = flagsamount + 1
+                } else {
+                    flaggedtable[tile] = 0
+                    drawtile(tile, 'unpressed')
+                    flagsamount = flagsamount - 1
+                }
+                document.getElementById('mine1').style.backgroundPosition = -((mines - flagsamount) % 10) * 11 + 'px'
+                document.getElementById('mine2').style.backgroundPosition = -(Math.floor((mines - flagsamount) / 10) % 10) * 11 + 'px'
+                document.getElementById('mine3').style.backgroundPosition = -(Math.floor((mines - flagsamount) / 100) % 10) * 11 + 'px'
+                if (JSON.stringify(flaggedtable) == JSON.stringify(minetable)) {
+                     win()
+                }
+            }
+        }
+        var testcounter = 1
+        gamecanvas.addEventListener('touchstart', function(event) {
+            const touch = event.touches[0]
+            const rect = gamecanvas.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            heldtile = Math.floor(x / 16) + (Math.floor(y / 16) * gamex)
+            //document.getElementById('debugtext').innerHTML = heldtile
+            if (playing == true) {
+                mobileflagged = false
+                testcounter = testcounter + 1
+                //document.getElementById('debugtext').innerHTML = testcounter
+                gamebutton.classList.add('smileystepping')
+                holdtimeout = setTimeout(function() {
+                    mobileflagged = true
+                    flag(heldtile)
+                }, 333)
+            }
+        })
+        gamecanvas.addEventListener('touchend', function(event) {
+            clearTimeout(holdtimeout)
+            if (playing == true) {
+                gamebutton.classList.remove('smileystepping')
+                if (flaggedtable[heldtile] == 0) {
+                    if (pressedtable[heldtile] == 0) {
+                        if (mobileflagged == false) {
+                            revealtile(heldtile)
+                        } else {
+                            mobileflagged = false
+                        }
+                        
+                    }
+                }
+            }
+        })
+        gamecanvas.addEventListener('pointerdown', function(event) {
+            if (event.pointerType === 'mouse') {
+                if (playing == true) {
+                    if (event.button === 2) {
+                        event.preventDefault()
+                        flag(hoveredtile)
+                
+                    } else {
+                        gamebutton.classList.add('smileystepping')
+                    }
+                }
+            }
+            //revealtile(hoveredtile)
+        })
+        gamecanvas.addEventListener('pointerup', function(event) {
+            if (event.pointerType === 'mouse') {
+                if (event.button !== 2) {
+                    if (playing == true) {
+                        gamebutton.classList.remove('smileystepping')
+                        if (flaggedtable[hoveredtile] == 0) {
+                            if (pressedtable[hoveredtile] == 0) {
+                                revealtile(hoveredtile)
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
