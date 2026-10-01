@@ -4,7 +4,7 @@
   <meta property="og:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary">
-    <meta name="viewport" content="width=800, initial-scale=1">
+    <meta name="viewport" content="width=800">
 	<meta name="twitter:title" content="LandonPET's World!">
 	<meta name="twitter:description" content='helooooo im landonpetttt blwehhhh i lov kinitopett'>
 	<meta name="twitter:image" content='https://www.landonpet.com/assets/images/LandonPETicon.png'>
@@ -310,6 +310,7 @@
     var appspace = document.getElementById('appspace')
     var appsdisplay = document.getElementById('appsdisplay')
     var focusedwindow = false
+    var audiosloaded = false
     var appsdata = {
 
     }
@@ -321,11 +322,18 @@
         console.log(appsdata)
     }
     async function loadaudios() {
+        document.getElementById('starttext').innerHTML = 'Loading... (Click.ogg)'
         clicksound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/Click.ogg')).arrayBuffer()))
+        document.getElementById('starttext').innerHTML = 'Loading... (windowtext.mp3)'
         windowtextsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/windowtext.mp3')).arrayBuffer()))
+        document.getElementById('starttext').innerHTML = 'Loading... (MouseDown.wav)'
         mousedown = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/MouseDown.wav')).arrayBuffer()))
+        document.getElementById('starttext').innerHTML = 'Loading... (MouseUp.wav)'
         mouseup = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/MouseUp.wav')).arrayBuffer()))
+        document.getElementById('starttext').innerHTML = 'Loading... (osstartup.mp3)'
         osstartsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/osstartup.mp3')).arrayBuffer()))
+        audiosloaded = true
+        document.getElementById('starttext').innerHTML = 'click to Start'
     }
     function playsound(sound) {
         const soundplayer = audioCtx.createBufferSource();
@@ -336,21 +344,23 @@
     loadaudios()
     preloadapps()
     document.addEventListener('mousedown', async function(event) {
-        if (started == false) {
-            document.getElementById('starttext').remove()
-                await new Promise(resolve => setTimeout(resolve, 250))
-                ambientloop.play()
-                playsound(osstartsound)
-                document.getElementById('topstartupbar').style.height = 0 + 'px'
-                document.getElementById('bottomstartupbar').style.height = 0 + 'px'
-                started = true
-                setTimeout(() => {
-                    if (windowcount == 0) {
-                        openapp('testapp')
-                    }
-                    document.getElementById('topstartupbar').remove()
-                    document.getElementById('bottomstartupbar').remove()
-                }, 6000);
+        if (audiosloaded == true) {
+            if (started == false) {
+                document.getElementById('starttext').remove()
+                    await new Promise(resolve => setTimeout(resolve, 250))
+                    ambientloop.play()
+                    playsound(osstartsound)
+                    document.getElementById('topstartupbar').style.height = 0 + 'px'
+                    document.getElementById('bottomstartupbar').style.height = 0 + 'px'
+                    started = true
+                    setTimeout(() => {
+                        if (windowcount == 0) {
+                            openapp('testapp')
+                        }
+                        document.getElementById('topstartupbar').remove()
+                        document.getElementById('bottomstartupbar').remove()
+                    }, 6000);
+            }
         }
   playsound(mousedown)
 });
