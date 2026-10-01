@@ -1,0 +1,3 @@
+testapp.app
+nitolingspawner.app
+minesweeper.app

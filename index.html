@@ -260,6 +260,9 @@
         </div>
     </div>
     <div class='appicons'>
+
+        <!-- landonpet if your app no work i think you might've forgotten to update the prefetch txt zro go update it zro -->
+
         <button ondblclick='if (!ismobile) {openapp("testapp")}' ontouchend='openapp("testapp")' class='appicon'>
             <img class='unselectable' src='/assets/images/LandonPETicon.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Hello World!</p>
@@ -307,12 +310,37 @@
     var appspace = document.getElementById('appspace')
     var appsdisplay = document.getElementById('appsdisplay')
     var focusedwindow = false
+    var appsdata = {
+
+    }
+    async function preloadapps() {
+        var appnamestable = (await (await fetch('assets/apps/fetchapplist.txt')).text()).split(/\r?\n/)
+        appnamestable.forEach( async (app) => {
+            appsdata[app.replace('.app', '')] = await (await fetch('assets/apps/' + app)).text()
+        });
+        console.log(appsdata)
+    }
+    async function loadaudios() {
+        clicksound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/Click.ogg')).arrayBuffer()))
+        windowtextsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/windowtext.mp3')).arrayBuffer()))
+        mousedown = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/MouseDown.wav')).arrayBuffer()))
+        mouseup = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/MouseUp.wav')).arrayBuffer()))
+        osstartsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/osstartup.mp3')).arrayBuffer()))
+    }
+    function playsound(sound) {
+        const soundplayer = audioCtx.createBufferSource();
+        soundplayer.buffer = sound;
+        soundplayer.connect(audioCtx.destination);
+        soundplayer.start(0); 
+    }
+    loadaudios()
+    preloadapps()
     document.addEventListener('mousedown', async function(event) {
         if (started == false) {
             document.getElementById('starttext').remove()
                 await new Promise(resolve => setTimeout(resolve, 250))
                 ambientloop.play()
-                osstartsound.play()
+                playsound(osstartsound)
                 document.getElementById('topstartupbar').style.height = 0 + 'px'
                 document.getElementById('bottomstartupbar').style.height = 0 + 'px'
                 started = true
@@ -324,15 +352,15 @@
                     document.getElementById('bottomstartupbar').remove()
                 }, 6000);
         }
-  mousedown.play()
+  playsound(mousedown)
 });
 
 document.addEventListener('mouseup', function(event) {
-  mouseup.play()
+  playsound(mouseup)
 });
 
     async function openapp(appname) {
-        var appdata = await (await fetch('assets/apps/' + appname + '.app')).text()
+        var appdata = appsdata[appname]
         var windowsize = (appdata.split('\n')[0]).split(',');
         windowsize = { x: Number(windowsize[0]) + 12, y: Number(windowsize[1]) + 35 }
         var windowtitle = appdata.split('\n')[1]
@@ -384,16 +412,12 @@ document.addEventListener('mouseup', function(event) {
         setTimeout(() => {
             taskbarwindow.style.width = 'auto'
         }, 200);
-        var cclicksound = clicksound.cloneNode()
-        cclicksound.play()
-        cclicksound.remove()
+        playsound(clicksound)
         windowcount = windowcount + 1
         totalwindowcount = totalwindowcount + 1
         for (let i = 0; i < windowtitle.length; i++) {
             currentwindowtitle.textContent = windowtitle.substring(0, i)
-            var cwindowtextsound = windowtextsound.cloneNode()
-            cwindowtextsound.play()
-            cwindowtextsound.remove()
+            playsound(windowtextsound)
             await new Promise(resolve => setTimeout(resolve, 50))
         }
         //taskbarwindow.style.width = 'max-content'
