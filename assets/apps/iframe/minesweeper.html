@@ -67,6 +67,7 @@
         var flaggedtable = []
         var hoveredtile = 0
         var playing = true
+        var gamestarted = false
         var holdtimeout
         var mobileflagged
         var heldtile
@@ -92,6 +93,7 @@
         tilestexture.onload = startgame
 
         function startgame() {
+            gamestarted = false
             mines = Math.floor(25 + (Math.random() * 6))
             flagsamount = 0
             document.getElementById('mine1').style.backgroundPosition = -((mines - flagsamount) % 10) * 11 + 'px'
@@ -102,12 +104,6 @@
             document.getElementById('timer1').style.backgroundPosition = -(timer % 10) * 11 + 'px'
             document.getElementById('timer2').style.backgroundPosition = -(Math.floor((timer) / 10) % 10) * 11 + 'px'
             document.getElementById('timer3').style.backgroundPosition = -(Math.floor((timer) / 100) % 10) * 11 + 'px'
-            interval = setInterval(function () {
-                timer = Math.min(timer + 1, 999)
-                document.getElementById('timer1').style.backgroundPosition = -(timer % 10) * 11 + 'px'
-                document.getElementById('timer2').style.backgroundPosition = -(Math.floor((timer) / 10) % 10) * 11 + 'px'
-                document.getElementById('timer3').style.backgroundPosition = -(Math.floor((timer) / 100) % 10) * 11 + 'px'
-            }, 1000)
             youwin.style.display = 'none'
             gamebutton.classList.remove('smileysad')
             for (let i = 0; i <= (gamex * gamey) - 1; i++) {
@@ -171,6 +167,15 @@
             gamebutton.classList.add('smileysad')
         }
         function revealtile(tile) {
+            if (gamestarted == false) {
+                gamestarted = true
+                interval = setInterval(function () {
+                    timer = Math.min(timer + 1, 999)
+                    document.getElementById('timer1').style.backgroundPosition = -(timer % 10) * 11 + 'px'
+                    document.getElementById('timer2').style.backgroundPosition = -(Math.floor((timer) / 10) % 10) * 11 + 'px'
+                    document.getElementById('timer3').style.backgroundPosition = -(Math.floor((timer) / 100) % 10) * 11 + 'px'
+                }, 1000)
+            }
             var tiles = {}
             var minecount = 0
             if (tile % gamex == 0) {
