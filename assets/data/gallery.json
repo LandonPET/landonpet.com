@@ -1,0 +1,524 @@
+{
+    "personalassistant": {
+        "name": "personal assistant",
+        "img": "personalassistant",
+        "date": "5/23/2024",
+        "addeddate": "10/1/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "This is my first ever full KinitoPET drawing, made back in May 23rd, 2024."
+    },
+    "superdog": {
+        "name": "superdog",
+        "img": "superdog2",
+        "date": "10/30/2024",
+        "addeddate": "10/1/2026",
+        "type": "image",
+        "category": "Fanart",
+        "description": "This is fanart I made for someone who went under the name 'The super dog team' back in October 30th, 2024.     I'm pretty sure this also counts as the first fanart I have ever made for someoneeee bwehhhhhhhh"
+    },
+    "anotherthing": {
+        "name": "anotherthing",
+        "img": "anotherthing",
+        "date": "1/4/2025",
+        "addeddate": "10/1/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "This is some KinitoPET art that I had made 5 days before KinitoPETs 1 year release anniversary. This is also the first 3D art I had made of KinitoPET. I mainly created this art because even back then I felt like KinitoPET helped me out of dark times and made me feel way happier. I felt really grateful for everything the game brought me so I made this art to represent that."
+    },
+    "mebutknto": {
+        "name": "me but knto",
+        "img": "mebutknto",
+        "date": "1/29/2025",
+        "addeddate": "10/1/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "These are a few of the first drawings I made of LandonPET from January 29th, to February 1st, 2025. (ordered from left to right, top to bottom)"
+    },
+    "landonpetplushie": {
+        "name": "LandonPET Plushie",
+        "img": "LandonPETplushie",
+        "date": "2/7/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This was a little thing I made based on the official KinitoPET plushie back in February 2025 when LandonPET as an OC hadn't existed for that long. (hence the land not being geographically accurate here)"
+    },
+    "birthday": {
+        "name": "happy birthday to me",
+        "img": "birthday",
+        "date": "2/12/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "I made this for myself on my 14th birthday! On an extra note, I'm still so grateful for the amount of art that I got for my 15th birthday, especially compared to my 14th. I'll always love and cherish this community forever. <3"
+    },
+    "profilepicture": {
+        "name": "LandonPET Profile Picture",
+        "img": "LandonPETpfp",
+        "date": "4/19/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This is the profile picture I mainly use. This is also when my 2D art style fully developed into the one I use now!"
+    },
+    "nighttime": {
+        "name": "Night Time",
+        "img": "LandonPETnighttime",
+        "date": "4/21/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This is the second LandonPET drawing I made after my profile picture."
+    },
+    "aboutlandonpet": {
+        "name": "About LandonPET",
+        "img": "AboutLandonPET2",
+        "date": "4/22/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This is LandonPETs 2D reference sheet!"
+    },
+    "kntoiseek": {
+        "name": "hide and seek test footage",
+        "img": "kntoISeek",
+        "date": "5/21/2025",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "Misc",
+        "description": "This is some early test footage I did based off of KinitoPETs Hide and Seek! I used Roblox in VR and extensive editing to create this. I don't use that method anymore since I've found way better ways of going about doing things. But I still think that this is pretty cool to look back on!"
+    },
+    "unfinishednight": {
+        "name": "Night drawing",
+        "img": "unfinishednight",
+        "date": "5/28/2025",
+        "addeddate": "10/2/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This is a (considered to be) unfinished night drawing I made of LandonPET using a real life background!"
+    },
+    "zinkandzonk": {
+        "name": "'Zink!' and 'zonk.'",
+        "img": "zinkandzonk",
+        "date": "7/1/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "As we can see, there is 'Zink!' on the left. However, on the right, we have 'zonk.'. me personally i feel like zonk needs some medical attention he looks like he needs it"
+    },
+    "weouttatires": {
+        "name": "we outta tires",
+        "img": "weouttatires",
+        "date": "7/11/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "me: yo kinito i need a tire \r\n    kinito:"
+    },
+    "meinkntopaint": {
+        "name": "me in knto paint",
+        "img": "meinkntopaint",
+        "date": "7/13/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "this me in KinitoPET paint don't mind the tired nito idk why he's still tired"
+    },
+    "explod": {
+        "name": "explod",
+        "img": "LandonPETexplod",
+        "date": "7/19/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "LandonPET",
+        "description": "(nooooo he explodd) This is actually the first time I ever had and used a 3D model! (3D would later become my primary form of art) I started making the model on July 18 2025 and finished on July 19 2025 (12:09 am thats crazy) and then I made this gif less than an hour later. At this time he had no rig, only model."
+    },
+    "beginning": {
+        "name": "beginning",
+        "img": "beginning",
+        "date": "7/25/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Don't worry you'll see sometime! Dont woròø Youll see Skietile! n't$ugr^y!ymõ'`l r!e$sometiie Dkn/d worry 9cu/ll s%e some|ime+ don#t   0ïu0ll2se0%0 0sO00°4m000ti0240 4Bá00#01kp0epg0200o050nd 2dp000x0te0 0h}pe0Thm Ghite BacogòoUnd T(e(White B!kk'R/und The WhhBeckgroune Üèe`WlitedBackground The WJit% Backgò/und ôhE White Backgrouf` Tie White Backround Tha Whiôe Ba#igrunl The hive Bacooround The Whitå Babûgroundhå`White0JqckgvouNd Txå Whiôe Beckgro5nl Thu W(éôe Bac{frou~dhe Wlitg Cackor/und Tydite Bikkgroun%0Vè%�Whid% Backgzgw.d The White Bqs{Oround Uha(hiue J`#kgvkUnd Fhe0Whate0Backgrkõnd`Th%�Whitm @aqkgrou.f The�WªiDe B!ckground "
+    },
+    "pancak": {
+        "name": "pancak",
+        "img": "pancak",
+        "date": "7/25/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "ouhhhhhh im a pancakk i made this when someon said that the earth is flat"
+    },
+    "slepy": {
+        "name": "unreleased 'slepy' drawing",
+        "img": "LandonPETslepy",
+        "date": "8/13/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This is a drawing I made of me sleeping, I never really properly released this before and it never really took place anywhere so I'm just gonna put it here."
+    },
+    "bald": {
+        "name": "bald",
+        "img": "bald",
+        "date": "8/13/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "waaaaa someone drank my gillsss waaaaaa"
+    },
+    "stopit": {
+        "name": "STOP IT",
+        "img": "stopit",
+        "date": "8/16/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "STOP DRINKING MY GILLS"
+    },
+    "nitolings": {
+        "name": "We are the Nitolings!",
+        "img": "nitolings",
+        "date": "8/26/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "KinitoPET",
+        "description": "We are the Nitolings, Please feed us!"
+    },
+    "lanito": {
+        "name": "Lanito!",
+        "img": "Lanito",
+        "date": "9/18/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Yaoi",
+        "description": "This is my son! I love and care for him very much and he brings me much happiness. <3"
+    },
+    "kinitopettgn": {
+        "name": "KinitoPET Tamagotchi Nano",
+        "img": "kinitoooos",
+        "date": "9/11/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "This is a concept I made for if KinitoPET had a Tamagotchi Nano collaboration! (i kind of accidentally fooled some people with it around a few times muhehehehehehe)"
+    },
+    "nuggets": {
+        "name": "nuggets",
+        "img": "nuggets",
+        "date": "9/12/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "'get this dude out my nuggets' but what if i dont wanaaaaaaaa nyom nyom nyom nyom nyom nyom nyommnmnymonmynmoynmom"
+    },
+    "realbook": {
+        "name": "THE BOOK IS REALLL",
+        "img": "realbook",
+        "date": "9/18/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Misc",
+        "description": "This is the physical New Beginnings book that my mom created! <3 (i stil hav it muehehehehehehe)"
+    },
+    "athought": {
+        "name": "KHD - a thought",
+        "img": "athought",
+        "date": "9/29/2025",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "KinitoPET",
+        "description": "(??/??/???? 'a message to you, sonny.') This is technically the first main video of KINITO HARD DISK. This is also where me learning 3D animation was starting to happen a bit. I still find this video really cool even though I'm not exactly sure if I consider it canon or not anymore? Not to mention it's technically not the first actual episode of KHD but moreso just a little thing I put out. Anyhow, I still really like this video and I feel like it still represents the series well."
+    },
+    "justbecompetent2d": {
+        "name": "JUST BE COMPETENT (W.I.P)",
+        "img": "JustBeCompetentUnfinished",
+        "date": "10/6/2025",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "This is the 2D W.I.P of the 'JUST BE COMPETENT' animation! (probably also the first and only 2D LandonPET animation) I remember when I was making this I kind of doubted that I would be able to make the final 3D version. Especially since I was already pretty proud of this! (even though it was meant to be a concept for a 3D video)"
+    },
+    "justbecompetent": {
+        "name": "JUST BE COMPETENT",
+        "img": "JustBeCompetent",
+        "date": "10/8/2025",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "This is the first complete 3D animation of LandonPET! This video was the start of what influenced me into doing things the way I do now! (3D animation bwehhh) I remember not being sure I would be able to finish this but when I did I was shocked at how well it turned out since it was the first time I did this. (and also the fact the 3D part only took 2-3 DAYS although that's kinda just how I work now)"
+    },
+    "california": {
+        "name": "california",
+        "img": "california4",
+        "date": "10/9/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Misc",
+        "description": "what if it existed but no one could prove it"
+    },
+    "landonpetspin": {
+        "name": "SPINNN",
+        "img": "LandonPETspin",
+        "date": "10/9/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "LandonPET",
+        "description": "SPIIIIINNNNNNNNNNNNNNNNNN"
+    },
+    "landonpetfall": {
+        "name": "fall",
+        "img": "LandonPETfall",
+        "date": "10/9/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "LandonPET",
+        "description": "*whistle falling sound effect* *boink sound effect* *bonk sound effect* *bionk sound effect* *stone sliding sound effect* *whistle falling sound effect*"
+    },
+    "kinto": {
+        "name": "kinto",
+        "img": "kinto",
+        "date": "10/10/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "KinitoPET",
+        "description": "kintooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo i made this in OE-CAKE and using color keying in editing software bwehhhh"
+    },
+    "rubiespin": {
+        "name": "RUBIE SPINNNNN",
+        "img": "rubiespin",
+        "date": "10/15/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "Fanart",
+        "description": "BWEHHHHHHHHHHHHH I MADE THIS FOR RUBIES 15TH BIRTHDAYY BWEHHHHHHHH"
+    },
+    "dance": {
+        "name": "dance",
+        "img": "LandonPETdance",
+        "date": "10/22/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "LandonPET",
+        "description": "this is technically the first time i gave landon a rig and it's a deformed gangnam style mixamo rig oh my goog zro"
+    },
+    "goober": {
+        "name": "Goober",
+        "img": "Goober",
+        "date": "11/1/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "Goober. I sure wonder if he'll get Sequels."
+    },
+    "goober2": {
+        "name": "Goober 2",
+        "img": "Goober2",
+        "date": "11/1/2038",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "No way."
+    },
+    "kinto2": {
+        "name": "kinto the II",
+        "img": "kinto2",
+        "date": "11/3/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "kintooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    },
+    "duckling": {
+        "name": "Duckling",
+        "img": "Duckling",
+        "date": "11/9/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "This is a Duckling. He also goes by Chickenito or Chicken kinito depending on the position of the clouds on Sundays."
+    },
+    "cube": {
+        "name": "Cube Making",
+        "img": "LandonPETcube",
+        "date": "11/11/2025",
+        "addeddate": "10/3/2026",
+        "type": "gif",
+        "category": "LandonPET",
+        "description": "This is the first demonstration of LandonPETs power to open and manipulate windows! This is also the first time I gave LandonPET a proper armature rig!"
+    },
+    "icareabouthimsomuch": {
+        "name": "sympathy",
+        "img": "icareabouthimsomuch",
+        "date": "11/12/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "'The fact that he cared so much that he did all this for me. He put so much into everything I can tell he really cared, he tried the best he could. I care about him too. He just wanted me to be happy, I want him to be happy too. I hope you're doing okay Kinito.'"
+    },
+    "packingitup": {
+        "name": "packing it up",
+        "img": "packingitup",
+        "date": "11/28/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "'pack it up' me:"
+    },
+    "releaseday": {
+        "name": "Release Day",
+        "img": "ReleaseDay",
+        "date": "12/1/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "5/17/1999"
+    },
+    "inthedark": {
+        "name": "in the dark",
+        "img": "inthedark",
+        "date": "12/8/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "This demonstrates LandonPETs ability to glow in the dark!"
+    },
+    "hug": {
+        "name": "HUGGGGG",
+        "img": "HUGGGGG",
+        "date": "12/8/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Yaoi",
+        "description": "THIS ME HUGGING KINITOOOO BWEHHH"
+    },
+    "cloudd": {
+        "name": "cloudd + nito",
+        "img": "cloudd",
+        "date": "1/29/2025",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "KinitoPET",
+        "description": "cloudd with the kinitoooooooooooooooooooooo"
+    },
+    "clouddlatnernn": {
+        "name": "cloudd + latnernn",
+        "img": "clouddlatnernn",
+        "date": "1/29/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "cloudd with the latnernnnnn"
+    },
+    "clouddTHEMMMM": {
+        "name": "cloudd + THEMMMM",
+        "img": "clouddTHEMMMM",
+        "date": "1/29/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Yaoi",
+        "description": "ME AND KINITOOOOOOO ON CLOUDDD BWEHHHHHHHH"
+    },
+    "introduction": {
+        "name": "LandonPET Introduction",
+        "img": "LandonPETintroduction",
+        "date": "3/14/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "o yeh i hav no idea how to describe this nows this changed everything (even though this took me like a week to make)"
+    },
+    "iseekwithoutthek": {
+        "name": "i seek without the k",
+        "img": "i seek without the k",
+        "date": "3/19/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "👀"
+    },
+    "hbdtyhbdtyhbddlhbdty": {
+        "name": "hbdtyhbdtyhbddlhbdty",
+        "img": "hbdtyhbdtyhbddlhbdty",
+        "date": "4/10/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "hbdtyhbdtyhbddlhbdty (music = LORN - ACID RAIN)"
+    },
+    "comfort": {
+        "name": "comfort 1/2",
+        "img": "comfort",
+        "date": "4/22/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": ""
+    },
+    "ilovehimsomuch": {
+        "name": "comfort 2/2",
+        "img": "ilovehimsomuch",
+        "date": "4/22/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": ""
+    },
+    "kwikflip": {
+        "name": "kwik flip",
+        "img": "LandonPETkwikflip",
+        "date": "5/23/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "LandonPET",
+        "description": "i was kinda late to this not gona lie but i kinda just felt like doing it anyways and i think it led to the smoothest dancing i've ever done"
+    },
+    "idrathersleep": {
+        "name": "I'd Rather Sleep (KinitoPET)",
+        "img": "IdRatherSleepKinitoPET",
+        "date": "6/13/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "KinitoPET",
+        "description": "This is actually the KinitoPET animation that I feel the most proud of as of typing this! (10/3/2026) I spent a few hours to a day making the cover (using Kinitos original speech API) and a few days making the 3D animation. Also I used a real DVD/VCR player for the last part with OperatingSystem! While working on the animation I got so used to the audio that my brain kept forgetting that I had made it."
+    },
+    "whenyou'reclosetome": {
+        "name": "When you're close to me",
+        "img": "WhenYou'reCloseToMe",
+        "date": "6/28/2026",
+        "addeddate": "10/3/2026",
+        "type": "video",
+        "category": "Yaoi",
+        "description": "HEHEHEHE KINTOOOOOOOOOOOOOO"
+    },
+    "clouddTHEMMMM2": {
+        "name": "cloudd + THEMMMM (2)",
+        "img": "clouddTHEMMMM2",
+        "date": "6/29/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Yaoi",
+        "description": "HEHEHEHEHFDSHFSDSHDF ME AND HIM ON CLOUDDDDDDD"
+    },
+    "KISSING": {
+        "name": "KISSING",
+        "img": "THEYKISSEDDDDDD",
+        "date": "7/1/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "Yaoi",
+        "description": "BWEEEEEEEHHEHEHEHEHEFHSJSHEKFHSDLHLSOKDHVIOSKVHIOSPDGFHLKJSDHLSKJDF KINTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKTOISJFSDJFSDHVKJDH"
+    },
+    "heart": {
+        "name": "<3",
+        "img": "LandonPETheart",
+        "date": "9/5/2026",
+        "addeddate": "10/3/2026",
+        "type": "image",
+        "category": "LandonPET",
+        "description": "<3"
+    }
+}

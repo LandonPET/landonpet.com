@@ -127,6 +127,7 @@
             text-align: center;
             width: 100%;
             height: 50px;
+            font-size: 16px;
         }
         .appheader {
             font-smooth: never;
@@ -275,6 +276,14 @@
             <img class='unselectable' src='/assets/images/minehunter.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Minesweeper</p>
         </button>
+        <button ondblclick='if (!ismobile) {openapp("gallery")}' ontouchend='openapp("gallery")' class='appicon'>
+            <img class='unselectable' src='/assets/images/gallery.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Gallery</p>
+        </button>
+        <button ondblclick='if (!ismobile) {openpet()}' ontouchend='openpet()' class='appicon'>
+            <img class='unselectable' src='/assets/images/pet.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>pet.exe</p>
+        </button>
         <button style='display: none;' onclick='openapp("testapp")'>test</button>
     </div>
     <div id='appspace' style='z-index: 1;'>
@@ -339,6 +348,17 @@
         const soundplayer = audioCtx.createBufferSource();
         soundplayer.buffer = sound;
         soundplayer.connect(audioCtx.destination);
+        soundplayer.onended = () => {
+            try {
+                soundplayer.stop();
+            } catch (e) {
+    
+            }
+            //console.log('KINTOOOOOOOOOOOOOOOOOOOO')
+            soundplayer.disconnect();
+            soundplayer.onended = null;
+            soundplayer.buffer = null;
+        };
         soundplayer.start(0); 
     }
     loadaudios()
@@ -461,6 +481,15 @@ document.addEventListener('mouseup', function(event) {
     }
     var appstorage = {
         testapp: {appdataname: 'testapp.app'}
+    }
+    async function openpet() {
+        console.log(appsdata['pet'])
+        const petscript = document.createElement('script');
+        petscript.async = true
+        petscript.type = 'module'
+        petscript.textContent = appsdata['pet'];
+        playsound(clicksound)
+        document.body.appendChild(petscript);
     }
 </script>
 <script>

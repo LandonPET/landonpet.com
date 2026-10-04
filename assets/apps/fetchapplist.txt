@@ -1,3 +1,5 @@
 testapp.app
 nitolingspawner.app
 minesweeper.app
+gallery.app
+pet.app

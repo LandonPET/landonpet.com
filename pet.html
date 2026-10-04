@@ -1,0 +1,98 @@
+<!--<div id='pet' style='width: 144px; height: 188px; position: absolute; background-image: url("assets/images/pet.png"); z-index: 199999;'></div>-->
+<script type='module'>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const gain = audioCtx.createGain();
+gain.gain.value = 0.4; 
+var pet = document.createElement('div')
+pet.style.width = '144px'
+pet.style.height = '188px'
+pet.style.position = 'absolute'
+pet.style.backgroundImage = 'url("assets/images/pet.png")'
+pet.style.zIndex = 199999
+document.body.appendChild(pet)
+var petsize = {x:pet.getBoundingClientRect().width,y:pet.getBoundingClientRect().height}
+var movingdirection = 'right'
+var boingsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/boingg.mp3')).arrayBuffer()))
+var thudsound = await audioCtx.decodeAudioData((await (await fetch('assets/sounds/nitobounce.wav')).arrayBuffer()))
+var onground = false
+var velocity = 0
+var petposition = {x:20,y:100}
+var raise = 30
+//console.log('kntooooooooo')
+pet.style.left = 20 + 'px'
+pet.style.top = 100 + 'px'
+function playsound(sound) {
+    const soundplayer = audioCtx.createBufferSource();
+    soundplayer.buffer = sound;
+    soundplayer.connect(gain)
+    gain.connect(audioCtx.destination)
+    soundplayer.onended = () => {
+        try {
+            soundplayer.stop();
+        } catch (e) {
+
+        }
+        //console.log('KINTOOOOOOOOOOOOOOOOOOOO')
+        soundplayer.disconnect();
+        gain.disconnect();
+        soundplayer.onended = null;
+        soundplayer.buffer = null;
+    };
+    soundplayer.start(0); 
+    
+}
+setInterval(step, 5)
+function step() {
+
+    if (movingdirection == 'right') {
+        console.log('kntoooooo')
+        petposition.x = petposition.x + 1
+        if (petposition.x >= (window.innerWidth - petsize.x)) {
+            petposition.x = (window.innerWidth - petsize.x) - 1
+            playsound(thudsound)
+            movingdirection = 'left'
+        }
+    }
+
+    if (movingdirection == 'left') {
+        petposition.x = petposition.x - 1
+        if (petposition.x <= 0) {
+            petposition.x = 1
+            playsound(thudsound)
+            movingdirection = 'right'
+        }
+    }
+
+    if (velocity > 0) {
+        onground = false
+    }
+
+    if (onground == false) {
+        velocity = velocity - 0.01
+        petposition.y = petposition.y - velocity
+        if (petposition.y >= (window.innerHeight - petsize.y - raise)) {
+            if (onground == false) {
+                playsound(thudsound)
+            }
+            onground = true
+            petposition.y = (window.innerHeight - petsize.y - raise)
+        } else {
+            onground = false
+        }
+    } else {
+        velocity = 0
+    }
+    pet.style.left = petposition.x + 'px'
+    pet.style.top = petposition.y + 'px'
+}
+var delay = Math.floor(Math.random() * (7000 - 3500 + 1)) + 3500
+function jumploop() {
+    delay = Math.floor(Math.random() * (7000 - 3500 + 1)) + 3500
+    playsound(boingsound)
+    velocity = (Math.random() * 3) + 1
+    setTimeout(jumploop, delay);
+    console.log('KNTOOOOOOOOOOOOOOO')
+}
+setTimeout(jumploop, delay);
+
+</script>

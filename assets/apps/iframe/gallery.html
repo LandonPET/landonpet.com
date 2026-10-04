@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        @font-face {
+            font-family: SourceCodePro;
+            src: url(../../fonts/SourceCodePro-Regular.ttf);
+        }
+        @font-face {
+            font-family: SourceCodeProItalic;
+            src: url(../../fonts/SourceCodePro-Italic.ttf);
+        }
+        html, body {
+            margin: 0;
+            overflow-x: hidden;
+            scrollbar-width: thin; scrollbar-color: #ff7bff #202020;
+            scrollbar-gutter: stable;
+            background-color: black;
+            color: white;
+        }
+        .drawingcontainer {
+            grid-template-columns: repeat(3, 1fr);
+            
+            overflow: hidden;
+            gap: 5px;
+            display: grid;
+            padding: 1%;
+            width: 96dvw;
+            border-radius: 10px;
+            left: 1dvw;
+            top: 280px;
+            background-color: rgb(0, 0, 30);
+            position: absolute;
+        }
+        .drawing {
+            user-select: none;
+            border-radius: 10%;
+            background-color: rgb(0, 0, 10);
+            color: white;
+            text-align: center;
+            
+            container-type: inline-size;
+            line-height: 15px;
+            min-width: 0; 
+            min-height: 0;
+            
+        }
+        .drawing:hover {
+            filter: brightness(1.5);
+        }
+        .drawing:active {
+            filter: brightness(1.2);
+        }
+        .drawingtitle {
+            font-size: clamp(0rem, 2vw, 5rem);
+            font-family: SourceCodePro;
+            width: 100%;
+            position: relative;
+            top: 5%;
+        }
+        .viewercontainer {
+            transition: background-color 0.2s cubic-bezier(0, 1, 0.5, 1);
+            position: fixed;
+            top: 0;
+            width: 100dvw;
+            height: 100dvh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .viewer {
+            transition: scale 0.2s cubic-bezier(0, 1, 0.5, 1);
+            transform-origin: center;
+            width: 80%;
+            height: 80%;
+            background-color: black;
+            border-radius: 20px;
+        }
+        .vcclosed {
+            background-color: #ff7bff00;
+        }
+        .vclosed {
+            scale: 0; 
+        }
+        .viewerart {
+            margin: 0 auto; position: relative; display: block; border-radius: 10px; width: 100%; max-width: 100%; max-height: 100%; aspect-ratio: 1 / 1; min-width: 0; object-fit: cover;
+        }
+        #viewerimage:hover {
+            filter: brightness(1.5);
+        }
+        #viewerimage:active {
+            filter: brightness(1.2);
+        }
+        .drawingdate {
+            font-size: 4cqi;
+            font-family: SourceCodeProItalic;
+            color: rgba(255, 255, 255, 0.5);
+            width: 100%;
+            position: relative;
+            top: 5%;
+        }
+        .drawingimage {
+            max-width: 90%;
+            object-fit: cover;
+            top: 2.5%;
+            background-color: #ff7bff00;
+            border-radius: 10%;
+            position: relative;
+            height: 75%;
+            margin: 0 auto;
+        }
+        .fsimage {
+            transition: opacity 0.2s cubic-bezier(0, 1, 0.5, 1);
+            background-color: #000000b0;
+            z-index: 19999999;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform-origin: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100dvw;
+            height: 100dvh;
+        }
+        .fsimage:active {
+            filter: brightness(1.2);
+        }
+        .fsiclosed {
+            opacity: 0%;
+        }
+        #sortindicator {
+            transition: left 0.2s cubic-bezier(0, 1, 0.5, 1);
+        }
+        #filterpopup {
+            transform-origin: 50% 0%;
+            transition: transform 0.2s cubic-bezier(0, 1, 0.5, 1);
+        }
+        .filterpopupclosed {
+            transform: scaleY(0);
+        }
+    </style>
+</head>
+<html>
+
+<body>
+    <div style='width: 100%; height: 350px;'>
+        <br>
+        <img style='width: 100%; height: 80px; object-fit: contain;' src='../../images/gallery.png'>
+        <br>
+        <div style='width: 100%; color: white; font-family: SourceCodeProItalic; text-align: center; font-size: 24px;'>LandonPETs Gallery</div>
+        <br>
+        <div style='width: 100%; color: white; font-family: SourceCodeProItalic; text-align: center; font-size: 14px;'>Here you can find some of the art that I've created!</div>
+        <div style='width: 100%; color: white; font-family: SourceCodeProItalic; text-align: center; font-size: 10px;'>(Click them to see full quality and descriptions!)</div>
+        <br>
+        <div style='width: 100%; color: white; font-family: SourceCodeProItalic; text-align: center; font-size: 10px;'>Last updated October 3rd, 2026</div>
+        <br>
+        <div style='width: 98dvw; left: 1dvw; height: 40px; background-color: rgb(0, 0, 30); border-radius: 10px; position: absolute; z-index: 1999;'>
+            <input type='text' style='background-color: #160016; width: 30%; height: 70%; position: absolute; top: 5%; right: 10px; border-radius: 10px; color: white; font-family: SourceCodePro; font-size: 100%;' placeholder='Search' onkeydown='setTimeout(()=>{search = this.value; loadgallerydata()},10)'>
+            <div style='background-color: #160016; width: 15%; height: 70%; position: absolute; top: 15%; right: calc(32% + 10px); border-radius: 10px;font-family: SourceCodeProItalic; font-size: 20px; user-select: none; text-align: center;' onclick='document.getElementById("filterpopup").classList.toggle("filterpopupclosed")'>
+                Filters
+            </div>
+            <div id='filterpopup' class='filterpopupclosed' style='background-color: #290029; width: 15%; right: calc(32% + 10px); height: 300px; position: absolute; top: 85%; border-radius: 10px; font-size: 15px; line-height: 7px; font-family: SourceCodeProItalic; text-align: center;'>
+                    <br>
+                    <br>
+                    KinitoPET
+                    <br>
+                    <input type='checkbox' checked onchange='filterKinitoPET = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    LandonPET
+                    <br>
+                    <input type='checkbox' checked onchange='filterLandonPET = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    Fanart
+                    <br>
+                    <input type='checkbox' checked onchange='filterFanart = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    Yaoi
+                    <br>
+                    <input type='checkbox' onchange='filterYaoi = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    Misc
+                    <br>
+                    <input type='checkbox' checked  onchange='filterMisc = this.checked; loadgallerydata()'>
+                    <br>
+                     <br>
+                    <br>
+                    <br>
+                    Image
+                    <br>
+                    <input type='checkbox' checked  onchange='filterImage = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    GIF
+                    <br>
+                    <input type='checkbox' checked  onchange='filterGIF = this.checked; loadgallerydata()'>
+                    <br>
+                    <br>
+                    Video
+                    <br>
+                    <input type='checkbox' checked  onchange='filterVideo = this.checked; loadgallerydata()'>
+                </div>
+            <div style='background-color: #160016; width: 30%; height: 70%; position: absolute; top: 15%; left: 10px; border-radius: 10px; user-select: none;'>
+                <div id='sortindicator' style='left: 0%; position: absolute; width: 50%; height: 100%; background-color: #ff7bff20; border-radius: 10px;'></div>
+                <div style='position: absolute; width: 50%; height: 100%; text-align: center; font-family: SourceCodeProItalic; font-size: 20px; z-index: 1999;' onclick='reverse = false; document.getElementById("sortindicator").style.left = "0%"; loadgallerydata()'>Oldest</div>
+                <div style='position: absolute; left: 50%; width: 50%; height: 100%; text-align: center; font-family: SourceCodeProItalic; font-size: 20px; z-index: 1999;' onclick='reverse = true; document.getElementById("sortindicator").style.left = "50%"; loadgallerydata()'>Newest</div>
+            </div>
+        </div>
+    </div>
+<div id='fullscreenimage' class='fsimage fsiclosed' style='background-image: url(../../images/gallery/defaultimage1.png); display: none;' onclick='this.classList.add("fsiclosed"); setTimeout(()=>this.style.display = "none", 200) //console.log("KNTOOOOOOOOOOOOOOO")'></div>
+<div id='viewercontainer' class='viewercontainer vcclosed' style='display: none;'>
+    <div id='viewer' class='viewer vclosed'>
+        <div style='background-color: rgb(15, 15, 15); width: 47.75%; height: 95%; border-radius: 20px; left: 50.57%; top: 2.5%; position: relative; text-align: center;'>
+            <div style='margin: 0 auto; position: relative; display: flex; width: 95%; height: 80%; top: 5%; align-items: center; justify-content: center;'>
+                <img class='viewerart' id='viewerimage' src='../../images/gallery/defaultimage1.png' onload='this.style.aspectRatio = String(this.naturalWidth + " / " + this.naturalHeight); ' onclick='document.getElementById("fullscreenimage").style.display = "block"; setTimeout(()=> document.getElementById("fullscreenimage").classList.remove("fsiclosed"), 10);'>
+                <video class='viewerart' id='viewervideo' style='display: none; object-fit: contain;' controls onloadedmetadata='this.style.aspectRatio = String(this.videoWidth + " / " + this.videoHeight); '></video>
+            </div>
+            
+            <br>
+            <t id='viewertitle' style='font-size: 3cqh; font-family: SourceCodePro; width: 100%; position: relative; top: 0%; color: white;'>Drawing Title</t>
+            <br>
+            <t id='viewerdate' style='font-size: 2cqh; font-family: SourceCodeProItalic; color: rgba(255, 255, 255, 0.5); width: 100%; position: relative; top: 0%;'>September 4th, 2025</t>
+        </div>
+        <div style='background-color: rgb(15, 15, 15); width: 47.75%; height: 95%; border-radius: 20px; left: 1.5%; top: calc(2.5% - 95%); position: relative; text-align: center;'>
+            <t style='color: white; font-family: SourceCodeProItalic; font-size: 4cqh'>Description</t>
+            <br>
+            <div id='viewerdescription' style='color: white; font-family: SourceCodePro; overflow-y: scroll; height: 80%; scrollbar-width: thin; scrollbar-color: #ff7bff #202020; overflow-wrap: break-word; word-wrap: break-word; overflow-x: hidden;'>
+                KNTOOOOOOOO
+            </div>
+        </div>
+    </div>
+</div>
+<div id='drawingcontainer' class='drawingcontainer'>
+    
+</div>
+<div id='drawingbase' class='drawing' style='display: none;' onclick='openviewer(this.id)'>
+        <img class='drawingimage' src='../../images/gallery/defaultimage1.png'>
+        <br>
+        <t class='drawingtitle'>Drawing Title</t>
+        <br>
+        <t class='drawingdate'>September 4th, 2025</t>
+    </div>
+<script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var clicksound
+    var drawingbase = document.getElementById('drawingbase')
+    var drawingcontainer = document.getElementById('drawingcontainer')
+    var viewercontainer = document.getElementById('viewercontainer')
+    var viewer = document.getElementById('viewer')
+    var viewerimage = document.getElementById('viewerimage')
+    var viewerdate = document.getElementById('viewerdate')
+    var viewertitle = document.getElementById('viewertitle')
+    var viewerdescription = document.getElementById('viewerdescription')
+    var fsimage = document.getElementById('fullscreenimage')
+    var viewervideo = document.getElementById('viewervideo')
+    var reverse = false
+    var search = ''
+    var gallerydata
+    var filterKinitoPET = true
+    var filterLandonPET = true
+    var filterFanart = true
+    var filterYaoi = false
+    var filterMisc = true
+    var filterImage = true
+    var filterGIF = true
+    var filterVideo = true
+    var monthstable = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December',
+    }
+    function getordinal(number) {
+        const pr = new Intl.PluralRules('en-US', { type: 'ordinal' });
+        const suffixes = {
+            one: 'st',
+            two: 'nd',
+            few: 'rd',
+            other: 'th'
+        };
+        const rule = pr.select(number);
+        const suffix = suffixes[rule];
+        return `${number}${suffix}`;
+    };
+    async function loadaudios() {
+        clicksound = await audioCtx.decodeAudioData((await (await fetch('../../sounds/Click.ogg')).arrayBuffer()))
+    }
+    function playsound(sound) {
+        const soundplayer = audioCtx.createBufferSource();
+        soundplayer.buffer = sound;
+        soundplayer.connect(audioCtx.destination);
+        soundplayer.onended = () => {
+            try {
+                soundplayer.stop();
+            } catch (e) {
+    
+            }
+            //console.log('KINTOOOOOOOOOOOOOOOOOOOO')
+            soundplayer.disconnect();
+            soundplayer.onended = null;
+            soundplayer.buffer = null;
+        };
+        soundplayer.start(0); 
+    }
+    async function addDrawing(drawing, drawingdata) {
+        var date = drawingdata['date'].split('/')
+        var datetext = monthstable[date[0]] + ' ' + getordinal(date[1]) + ', ' + date[2]
+        var newdrawing = drawingbase.cloneNode(true)
+        var drawingimage = newdrawing.querySelector('.drawingimage')
+        var drawingtitle = newdrawing.querySelector('.drawingtitle')
+        var drawingdate = newdrawing.querySelector('.drawingdate')
+        drawingimage.src = '../../images/gallery/preview/' + drawingdata['img'] + '.webp'
+        drawingtitle.innerHTML = drawingdata['name']
+        drawingdate.innerHTML = datetext
+        newdrawing.style.display = 'block'
+        newdrawing.id = drawing
+        drawingcontainer.appendChild(newdrawing)
+    }
+    async function loadgallerydata() {
+        drawingcontainer.innerHTML = ''
+        if (!gallerydata) {
+            gallerydata = await (await fetch('../../data/gallery.json')).json()
+        }
+        
+        if (reverse == false) {
+            for (const [drawing, drawingdata] of Object.entries(gallerydata)) {
+                var show = false
+                var typeshow = false
+                if (filterKinitoPET == true) {if (drawingdata['category'] == 'KinitoPET') {show = true}}
+                if (filterLandonPET == true) {if (drawingdata['category'] == 'LandonPET') {show = true}}
+                if (filterFanart == true) {if (drawingdata['category'] == 'Fanart') {show = true}}
+                if (filterYaoi == true) {if (drawingdata['category'] == 'Yaoi') {show = true}}
+                if (filterMisc == true) {if (drawingdata['category'] == 'Misc') {show = true}}
+                if (filterImage == true) {if (drawingdata['type'] == 'image') {typeshow = true}}
+                if (filterGIF == true) {if (drawingdata['type'] == 'gif') {typeshow = true}}
+                if (filterVideo == true) {if (drawingdata['type'] == 'video') {typeshow = true}}
+                if (search != '') {
+                    if (drawingdata['name'].toLowerCase().includes(search.toLowerCase())) {
+                        if (typeshow) {
+                            if (show) {
+                                await addDrawing(drawing, drawingdata)
+                            }
+                        }
+                        
+                        
+                    }
+                } else {
+                    if (typeshow) {
+                        if (show) {
+                            await addDrawing(drawing, drawingdata)
+                        }
+                    }
+                    
+                }
+                
+            }
+        } else {
+            for (const [drawing, drawingdata] of Object.entries(gallerydata).reverse()) {
+                var show = false
+                var typeshow = false
+                if (filterKinitoPET == true) {if (drawingdata['category'] == 'KinitoPET') {show = true}}
+                if (filterLandonPET == true) {if (drawingdata['category'] == 'LandonPET') {show = true}}
+                if (filterFanart == true) {if (drawingdata['category'] == 'Fanart') {show = true}}
+                if (filterYaoi == true) {if (drawingdata['category'] == 'Yaoi') {show = true}}
+                if (filterMisc == true) {if (drawingdata['category'] == 'Misc') {show = true}}
+                if (filterImage == true) {if (drawingdata['type'] == 'image') {typeshow = true}}
+                if (filterGIF == true) {if (drawingdata['type'] == 'gif') {typeshow = true}}
+                if (filterVideo == true) {if (drawingdata['type'] == 'video') {typeshow = true}}
+                if (search != '') {
+                    if (drawingdata['name'].toLowerCase().includes(search.toLowerCase())) {
+                        if (typeshow) {
+                            if (show) {
+                                await addDrawing(drawing, drawingdata)
+                            }
+                        }
+                        
+                        
+                    }
+                } else {
+                    if (typeshow) {
+                        if (show) {
+                            await addDrawing(drawing, drawingdata)
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    async function openviewer(id) {
+        var drawingdata = gallerydata[id]
+        var date = drawingdata['date'].split('/')
+        var datetext = monthstable[date[0]] + ' ' + getordinal(date[1]) + ', ' + date[2]
+        var ext
+        if (drawingdata['type'] == 'image') {ext = '.png'}
+        if (drawingdata['type'] == 'gif') {ext = '.gif'} 
+        if (drawingdata['type'] == 'video') {ext = '.mp4'}
+        viewertitle.innerHTML = drawingdata['name']
+        viewerdate.innerHTML = datetext
+        if (drawingdata['type'] != 'video') {
+            viewerimage.src = '../../images/gallery/' + drawingdata['img'] + ext
+            viewerimage.style.display = 'block'
+            viewervideo.style.display = 'none'
+        } else {
+            viewervideo.src = '../../images/gallery/' + drawingdata['img'] + ext
+            viewervideo.style.display = 'block'
+            viewerimage.style.display = 'none'
+        }
+        viewerdescription.innerHTML = drawingdata['description']
+        viewercontainer.style.display = 'flex'
+        fsimage.style.backgroundImage = 'url(../../images/gallery/' + drawingdata['img'] + ext + ')'
+        if (clicksound) {
+            playsound(clicksound)
+        }
+        setTimeout(() => {
+            viewercontainer.classList.remove('vcclosed')
+            viewer.classList.remove('vclosed')
+        }, 10);
+    }
+    loadgallerydata()
+    loadaudios()
+
+    viewercontainer.addEventListener('click', (event) => {
+        if (event.target === event.currentTarget) {
+            viewercontainer.classList.add('vcclosed')
+            viewer.classList.add('vclosed')
+            setTimeout(() => {
+                viewercontainer.style.display = 'none'
+                viewervideo.pause()
+                viewervideo.removeAttribute('src')
+                viewervideo.src = ''
+                viewervideo.load()
+                console.log(viewervideo)
+            }, 200);
+        }
+    });
+</script>
+</body>
+
+</html>
