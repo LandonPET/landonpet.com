@@ -1,3 +1,5 @@
+LANDON THIS IS DEPRECATED USE THE JS ARRAY
+
 testapp.app
 nitolingspawner.app
 minesweeper.app

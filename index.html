@@ -320,12 +320,17 @@
     var appsdisplay = document.getElementById('appsdisplay')
     var focusedwindow = false
     var audiosloaded = false
+    var fetchapplist = [
+        'testapp.app',
+        'nitolingspawner.app',
+        'minesweeper.app',
+        'gallery.app',
+        'pet.app']
     var appsdata = {
 
     }
     async function preloadapps() {
-        var appnamestable = (await (await fetch('assets/apps/fetchapplist.txt')).text()).split(/\r?\n/)
-        appnamestable.forEach( async (app) => {
+        fetchapplist.forEach( async (app) => {
             appsdata[app.replace('.app', '')] = await (await fetch('assets/apps/' + app)).text()
         });
         console.log(appsdata)
