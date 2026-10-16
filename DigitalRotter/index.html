@@ -179,7 +179,8 @@ JS libraries used
     <button onclick='PlayPauseNES()' id='nespause'>Pause</button>
     <button onclick='if (document.getElementById("nescontroller").style.display == "none") { document.getElementById("nescontroller").style.display = "" } else { document.getElementById("nescontroller").style.display = "none" }'>Toggle Controller</button>
     <br>
-    <div class="center2" style='width: 500px; height: 181px; display: none; background-image: url("nescontroller.webp");' id='nescontroller'>
+    <div class='center2' style='display: none;' id='nescontroller'>
+      <div class="center2" style='width: 500px; height: 181px; background-image: url("nescontroller.webp"); scale: 1.25; image-rendering: pixelated; image-rendering: crisp-edges; transform-origin: top;'>
       <button id='NESupButton' style='left: 56px; top: 51px; display: block; position: relative; width: 31px; height: 32px; background-color: #00000000;'></button>
       <button id='NESleftButton' style='left: 24px; top: 51px; display: block; position: relative; width: 32px; height: 31px; background-color: #00000000;'></button>
       <button id='NESrightButton' style='left: 88px; top: 20px; display: block; position: relative; width: 32px; height: 31px; background-color: #00000000;'></button>
@@ -190,6 +191,11 @@ JS libraries used
       <button id='NESaButton' style='left: 400px; top: -112px; display: block; position: relative; width: 50px; height: 50px; background-color: #00000000; border-radius: 1024px;'></button>
       <pre style='position: relative; display: block; top: -90px;'>D-Pad: Arrow keys | Start: Enter | Select: Shift | B: Z | A: X</pre>
     </div>
+    <br>
+    <br>
+    <br>
+    </div>
+    
   </div>
   <div id='midicontrols' style='width: 600px; display: none;'>
   <section id="section3">
