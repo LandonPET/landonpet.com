@@ -1,0 +1,312 @@
+<html>
+    <head>
+        <title>KinitoPET TTS Generator</title>
+  <link rel="icon" type="image/x-icon" href="/assets/images/kntoooo.png">
+  <meta property="og:image" content="https://www.landonpet.com/assets/images/kntoooo.png">
+<meta property="og:image:type" content="image/gif">
+<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content='KinitoPET TTS Generator'>
+	<meta name="twitter:description" content='LandonPETs KinitoPET TTS Generator'>
+	<meta name="twitter:image" content='https://www.landonpet.com/assets/images/kntoooo.png'>
+    <meta name="viewport" content="width=500">
+        <style>
+            @font-face {
+                font-family: FontB;
+                src: url(/assets/fonts/FontB.otf);
+            }
+            @font-face {
+                font-family: FontN;
+                src: url(/assets/fonts/FontN.otf);
+            }
+            @font-face {
+                font-family: SourceCodeProItalic;
+                src: url(/assets/fonts/SourceCodePro-Italic.ttf);
+            }
+            body, html {
+                font-family: FontB;
+                color: #2d2c22;
+                image-rendering: pixelated;
+                image-rendering: crisp-edges;
+                font-smooth: never;
+                -webkit-font-smoothing: none;
+                -moz-osx-font-smoothing: unset;
+                margin: 0;
+                overflow: hidden;
+            }
+            button {
+                border-style: solid;
+                font-family: FontB;
+                font-size: 14px;
+                border-width: 4px;
+                border-image: url('/assets/images/UI/button.png') 45% fill stretch;
+                color: #2d2c22;
+            }
+            button:active {
+                border-image: url('/assets/images/UI/buttonpressed.png') 45% fill stretch;
+            }
+            * {
+                touch-action: manipulation;
+            }
+            .Xbutton {
+                width: 15px;
+                height: 13px;
+                border-style: none;
+                background-image: url(/assets/images/windowbuttons.png);
+                background-repeat: no-repeat;
+            }
+            .Xbutton:active {
+                background-position: -15px 0px;
+            }
+            .appsize0 {
+                width: 100dvw;
+                height: 100dvh;
+            }
+            .appsize01 {
+                width: 560px;
+                height: 500px;
+            }
+            .app {
+                background-color: #ece9d8;
+                position: relative;
+            }
+            .nitoarea {
+                background-image: url(/assets/images/OSbgFile.webp);
+                background-position: center;
+                background-size: cover;
+                width: 100%;
+                height: 50%;
+                display: flex;
+            }
+            #kinito {
+                background-image: url(/assets/images/kinitospeaking.png);
+                width: 127px;
+                height: 208px;
+                background-position: 0px;
+                margin: auto
+            }
+            .whisper {
+                filter: grayscale() brightness(0.65) contrast(200);
+            }
+            .border {
+                border-style: solid;
+                border-width: 8px;
+                border-image: url(/assets/images/border.png) 29% 38% 33% 24% fill stretch;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='app appsize0'>
+            <div class='nitoarea'>
+                <div id='kinito' class='kinito'></div>
+            </div>
+            <div style='position: absolute; width: 100%; height: 100%; background-color: #00000080; top: 0; z-index: 1999; display: none; align-items: center; justify-content: center;' id='info'>
+                <div class='border' style='width: 75%; height: 90%; position: relative; text-align: center;'>
+                    <div class="Xbutton" style="position: absolute; right: 0px; top: 0px" onclick="this.parentElement.parentElement.style.display = 'none'"></div>
+                    <div style='width: 100%; text-align: center; font-size: 20px;'>KinitoPET TTS Generator</div>
+                    <div style='width: 100%; text-align: center; font-size: 16px; font-family: FontN;'>Created by LandonPET</div>
+                    <img src='/assets/images/LandonPETicon.png'>
+                    <div style='width: 100%; text-align: center; font-size: 14px; font-family: FontN;'>www.landonpet.com</div>
+                    <pre style='width: 100%; text-align: center; font-size: 16px; font-family: FontN;'>
+This was created in order to make generating Kinitos TTS easier!
+
+The voice along with the default pitch and speed is
+the exact one used in KinitoPET.
+(specified by troy_en)
+
+This as of now is using a frontend to the
+<a href='https://tetyys.com/SAPI4/'>TETTYS SAPI4 Web API</a>
+
+When a direct web port of the L&H TruVoice voices is made,
+this will be updated to use such.
+
+For now though, this is the best working approach for the web!
+                    </pre>
+                </div>
+            </div>
+            <div style='position: absolute; width: 100%; height: 100%; background-color: #00000080; top: 0; z-index: 1999; display: none; align-items: center; justify-content: center;' id='help'>
+                <div class='border' style='width: 75%; height: 90%; position: relative; text-align: center;'>
+                    <div class="Xbutton" style="position: absolute; right: 0px; top: 0px" onclick="this.parentElement.parentElement.style.display = 'none'"></div>
+                    <div style='width: 100%; text-align: center; font-size: 20px;'>Tips</div>
+                    <pre style='width: 100%; text-align: center; font-size: 16px; font-family: FontN;'>
+These are some tips for making the TTS sound more like KinitoPET!
+
+If your TTS sounds more monotone/dry than KinitoPET ingame,
+That means there isn't much exclamation marks.
+
+Kinitos TTS used in game uses exclamation marks pretty often
+in order to make Kinito sound more excited.
+
+Make sure not to use fully capitalized words.
+Otherwise the TTS will try fully spelling out the word
+instead of reading it.
+
+If the TTS mispronounces a word or expands into a different one,
+(Example being in turns into inches and thur turns into Thursday)
+
+Try to change the spelling of the word in a way to give more
+accurate pronounciation, like sounding it out.
+(Changing in to inn or thur to thurr)
+                    </pre>
+                </div>
+            </div>
+            <div class='border' style='width: calc(100% - 16px); text-align: center; line-height: 5px; height: calc(50% - 16px); position: relative;'>
+                <button style='padding: 0; position: absolute; right: -1px; top: -2px;' onclick='document.getElementById("info").style.display = "flex"'><img src='/assets/images/info.png'></button>
+                <button style='padding: 0; position: absolute; right: -1px; top: 18px;' onclick='document.getElementById("help").style.display = "flex"'><img src='/assets/images/help.png'></button>
+                <br>
+                <br>
+                <div style='width: 100%; text-align: center; font-size: 18px;'>KinitoPET TTS Generator</div>
+                <br>
+                <br>
+                <br>
+                <textarea id='speaktext' style='font-family: SourceCodeProItalic; width: 70%; background-color: fff3d6;' placeholder='Input text for Kinito to speak here...'></textarea>
+                <br>
+                <br>
+                <br>
+                <div style='display: flex; width: 100%;justify-content: center; gap:10px;'>
+                     <div id='pitchinput'>
+                        <label>Pitch</label>
+                        <br>
+                        <br>
+                        <br>
+                        <input id='pitchinputvalue' type='number' style='width: 50px;' value=135 min=50 max=400 onblur='enforcelimits()'><button style='height: 21px; margin-top: -1; padding: 0;' onclick='document.getElementById("pitchinputvalue").value = 135'><img src='/assets/images/reset.png'></button>
+                     </div>
+
+                     <div id='voicetypeselect'>
+                        <label>Voice Type</label>
+                        <br>
+                        <br>
+                        <br>
+                        <select name='voicetype' value='Normal' style='font-family: FontN; font-size: 16px;' onchange='SwitchType(this.value)'>
+                            <option value='Normal'>Normal</option>
+                            <option value='Whisper'>Whisper</option>
+                        </select>
+                     </div>
+
+                     <div id='speedinput'>
+                        <label>Speed</label>
+                        <br>
+                        <br>
+                        <br>
+                        <input id='speedinputvalue' type='number' style='width: 50px;' value=125 min=50 max=250 onblur='enforcelimits()'><button style='height: 21px; margin-top: -1; padding: 0;' onclick='if (voice == "Normal") {document.getElementById("speedinputvalue").value = 125} else if (voice = "Whisper") {document.getElementById("speedinputvalue").value = 100}'><img src='/assets/images/reset.png'></button>
+                     </div>
+                </div>
+                <br>
+                <br>
+                <div id='loadingtext' style='display: flex; align-items: center; justify-content: center; height: 33px; display: none;'><p style='margin: 0; margin-top: -10px;'>Loading...</p></div>
+                <div id='buttoncontrols'>
+                    <button id='speakbutton' onclick='KinitoSpeak()'>Speak</button>
+                    <button id='downloadbutton' onclick='KinitoSpeakDownload()' style='display: none;'>Download</button>
+                    <br>
+                </div>
+                <br>
+                <br>
+                <audio controls></audio>
+                <div id='scaler' style='height: 10px; width: 100px; background-color: #ffffff; display: none;'></div>
+            </div>
+        </div>
+        <script>
+            const audio = document.querySelector('audio');
+            const scaler = document.getElementById('scaler')
+            const kinito = document.getElementById('kinito')
+            const ctx = new AudioContext();
+            const mediaStreamAudioSourceNode = ctx.createMediaElementSource(audio);
+            const analyserNode = ctx.createAnalyser();
+            mediaStreamAudioSourceNode.connect(analyserNode);
+            analyserNode.connect(ctx.destination)
+            var loudness
+            var speakon = false
+            const pcmData = new Float32Array(analyserNode.fftSize);
+            function getVolume() {
+                analyserNode.getFloatTimeDomainData(pcmData);
+                let sumSquares = 0.0;
+                for (const amplitude of pcmData) { sumSquares += amplitude*amplitude; }
+                loudness = Math.min(Math.floor(Math.sqrt(sumSquares / pcmData.length) * 150), 20)
+                kinito.style.backgroundPosition = -(loudness * 127)
+                if (voice == 'Whisper') {
+                    if (loudness > 0) {
+                        kinito.classList.add('whisper')
+                    } else {
+                        kinito.classList.remove('whisper')
+                    }
+                }
+            };
+            audio.onplay = () => {
+                if (speakon == false) {
+                    ctx.resume();
+                    setInterval(() => getVolume(), 80);
+                    speakon = true
+                }
+            };
+            var kntoooo = document.getElementById('speaktext').value
+            var speed = 125 //125 for normal, 100 for whisper (Let's find out)
+            var pitch = 135 //135 for both normal and whisper
+            var voice = 'Normal' //either 'Normal' or 'Whisper'
+            var samecheck = speed + kntoooo + pitch + voice
+
+            async function KinitoSpeak() {
+                kntoooo = document.getElementById('speaktext').value
+                pitch = document.getElementById('pitchinputvalue').value
+                speed = document.getElementById('speedinputvalue').value
+                var finalvoice
+                if (voice == 'Normal') {
+                    finalvoice = 'Adult Male #3, American English (TruVoice)'
+                } else if (voice == 'Whisper') {
+                    finalvoice = 'Male Whisper'
+                }
+                lastsamecheck = samecheck
+                samecheck = speed + kntoooo + pitch + voice
+                if (lastsamecheck != samecheck) {
+                    console.log('kntoooooooo')
+                    document.getElementById('buttoncontrols').style.display = 'none'
+                    document.getElementById('loadingtext').style.display = 'flex'
+                    var voiceURL = new URL('https://pet.landonpet.workers.dev')
+                    voiceURL.searchParams.set('text', kntoooo),
+                    voiceURL.searchParams.set('voice', finalvoice),
+                    voiceURL.searchParams.set('pitch', pitch),
+                    voiceURL.searchParams.set('speed', speed),
+                    audio.src = await URL.createObjectURL(await (await fetch(voiceURL)).blob())
+                    audio.load()
+                }
+                audio.currentTime = 0
+                audio.play()
+                document.getElementById('loadingtext').style.display = 'none'
+                document.getElementById('buttoncontrols').style.display = 'inline'
+                document.getElementById('downloadbutton').style.display = 'inline'
+                //console.log(samecheck)
+            }
+            async function KinitoSpeakDownload() {
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = audio.src;
+                a.download = 'KinitoTTS';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            async function enforcelimits() {
+                document.getElementById('speedinputvalue').value = Math.min(Math.max(document.getElementById('speedinputvalue').min, document.getElementById('speedinputvalue').value), document.getElementById('speedinputvalue').max)
+                document.getElementById('pitchinputvalue').value = Math.min(Math.max(document.getElementById('pitchinputvalue').min, document.getElementById('pitchinputvalue').value), document.getElementById('pitchinputvalue').max)
+            }
+            async function SwitchType(voicetype) {
+                if (voicetype == 'Normal') {
+                    document.getElementById('speedinputvalue').value = 125
+                    document.getElementById('speedinputvalue').min = 50
+                    document.getElementById('speedinputvalue').max = 250
+                    document.getElementById('pitchinputvalue').min = 50
+                    document.getElementById('pitchinputvalue').max = 400
+                    speed = 125
+                } else if (voicetype == 'Whisper') {
+                    document.getElementById('speedinputvalue').value = 100
+                    document.getElementById('speedinputvalue').min = 30
+                    document.getElementById('speedinputvalue').max = 510
+                    document.getElementById('pitchinputvalue').min = 56
+                    document.getElementById('pitchinputvalue').max = 226
+                    speed = 100
+                }
+                document.getElementById('pitchinputvalue').value = 135
+                pitch = 135
+                voice = voicetype
+            }
+        </script>
+    </body>
+</html>

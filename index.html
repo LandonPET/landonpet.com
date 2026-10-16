@@ -146,6 +146,35 @@
             -moz-user-drag: none;
             -o-user-drag: none;
         }
+        .detailicon {
+            height: 30px;
+            width: 100%;
+            background-color: #00000016;
+            padding: 0;
+            margin: 0;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff00;
+            position: relative;
+        }
+        .detailicon:hover {
+            background-color: rgba(114, 77, 114, 0.15);
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff40;
+        }
+        .detailicon:focus {
+            background-color: #ff7bff50;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff80;
+        }
+        .detailicon:active {
+            background-color: #ff7bff70;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bffA0;
+        }
         .Xbutton {
             width: 15px;
             height: 13px;
@@ -237,6 +266,16 @@
         .startupbar {
             transition: height 3s ease-in;
         }
+        .osbutton {
+            border-style: solid;
+            font-size: 14px;
+            border-width: 4px;
+            border-image: url('/assets/images/UI/button.png') 45% fill stretch;
+            color: #2d2c22;
+        }
+        .osbutton:active {
+            border-image: url('/assets/images/UI/buttonpressed.png') 45% fill stretch;
+        }
     </style>
 </head>
 <html>
@@ -284,6 +323,10 @@
             <img class='unselectable' src='/assets/images/pet.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
             <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>pet.exe</p>
         </button>
+        <button ondblclick='if (!ismobile) {openapp("tools")}' ontouchend='openapp("tools")' class='appicon'>
+            <img class='unselectable' src='/assets/images/folder.png' style='width: 75px; height: 75px; image-rendering: pixelated; margin-top: 7px;'>
+            <p class='appicontitle unselectable' style='font-family: FontN; color: white; margin-top: 2px;'>Tools</p>
+        </button>
         <button style='display: none;' onclick='openapp("testapp")'>test</button>
     </div>
     <div id='appspace' style='z-index: 1;'>
@@ -325,7 +368,10 @@
         'nitolingspawner.app',
         'minesweeper.app',
         'gallery.app',
-        'pet.app']
+        'pet.app',
+        'tools.app',
+        'digitalrotter.app',
+        'kinitospeak.app']
     var appsdata = {
 
     }

@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+            font-family: FontN;
+            src: url(assets/fonts/FontN.otf);
+        }
+        * {
+            touch-action: manipulation;
+        }
+        .detailicon {
+            height: 30px;
+            width: 100%;
+            background-color: #00000016;
+            padding: 0;
+            margin: 0;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff00;
+            position: relative;
+        }
+        .detailicon:hover {
+            background-color: rgba(114, 77, 114, 0.15);
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff40;
+        }
+        .detailicon:focus {
+            background-color: #ff7bff50;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bff80;
+        }
+        .detailicon:active {
+            background-color: #ff7bff70;
+            border-style: inset;
+            border-width: 1px;
+            border-color: #ff7bffA0;
+        }
+        .osbutton {
+            border-style: solid;
+            font-size: 14px;
+            border-width: 4px;
+            border-image: url('/assets/images/UI/button.png') 45% fill stretch;
+            color: #2d2c22;
+        }
+        .osbutton:active {
+            border-image: url('/assets/images/UI/buttonpressed.png') 45% fill stretch;
+        }
+        </style>
+    </head>
+    <body>
+        <div style='background-color: rgb(255, 255, 255); overflow:hidden; height: calc(100% - 10px); line-height: 5px; padding: 5px'>
+    <div ondblclick='if (!ismobile) {openapp("digitalrotter")}' ontouchend='openapp("digitalrotter")' class='detailicon'>
+        <img class='unselectable' src='/assets/images/DigitalRotter.png' style='width: 26px; height: 26px; image-rendering: pixelated; position: relative; top: 2px; left: 5px;'>
+        <p class='unselectable' style='font-family: FontN; color: rgb(0, 0, 0); position: relative; top: -30px; left: 45px; font-size: 16px; font-smooth: never; -webkit-font-smoothing: none; -moz-osx-font-smoothing: unset;'>Digital Rotter <t style='color: #00000080; margin-left: 10px; font-size: 14px;'>A bit flipper that simulates digital rot (data degradation)</t></p>
+        <button class='osbutton' style='padding: 0; right: 2px; position: absolute; top: 1px; height: 28px; width: 28px;' onclick='window.open("DigitalRotter/index.html")'><img src='/assets/images/opentab.png'></button>
+    </div>
+    <br>
+    <div ondblclick='if (!ismobile) {openapp("kinitospeak")}' ontouchend='openapp("kinitospeak")' class='detailicon'>
+        <img class='unselectable' src='/assets/images/kntoooo.png' style='width: 26px; height: 26px; image-rendering: pixelated; position: relative; top: 2px; left: 5px;'>
+        <p class='unselectable' style='font-family: FontN; color: rgb(0, 0, 0); position: relative; top: -30px; left: 45px; font-size: 16px; font-smooth: never; -webkit-font-smoothing: none; -moz-osx-font-smoothing: unset;'>KinitoPET TTS Generator <t style='color: #00000080; margin-left: 10px; font-size: 14px;'>A simple and accurate web tool for generating KinitoPETs voice</t></p>
+        <button class='osbutton' style='padding: 0; right: 2px; position: absolute; top: 1px; height: 28px; width: 28px;' onclick='window.open("/KinitoTTS/index.html")'><img src='/assets/images/opentab.png'></button>
+    </div>
+    <br>
+</div>
+    </body>
+</html>

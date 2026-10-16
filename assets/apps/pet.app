@@ -42,7 +42,7 @@ setInterval(step, 5)
 function step() {
 
     if (movingdirection == 'right') {
-        console.log('kntoooooo')
+        //console.log('kntoooooo')
         petposition.x = petposition.x + 1
         if (petposition.x >= (window.innerWidth - petsize.x)) {
             petposition.x = (window.innerWidth - petsize.x) - 1
@@ -88,6 +88,6 @@ function jumploop() {
     playsound(boingsound)
     velocity = (Math.random() * 3) + 1
     setTimeout(jumploop, delay);
-    console.log('KNTOOOOOOOOOOOOOOO')
+    //console.log('KNTOOOOOOOOOOOOOOO')
 }
 setTimeout(jumploop, delay);
