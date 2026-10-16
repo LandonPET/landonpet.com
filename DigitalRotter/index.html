@@ -269,101 +269,52 @@ var redobitsflipped = ''
 var loading = false
 
 
-document.getElementById('NESupButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESupButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('up')
 });
-document.getElementById('NESleftButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESleftButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('left')
 });
-document.getElementById('NESrightButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESrightButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('right')
 });
-document.getElementById('NESdownButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESdownButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('down')
 });
-document.getElementById('NESselectButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESselectButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('select')
 });
-document.getElementById('NESstartButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESstartButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('start')
 });
-document.getElementById('NESbButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESbButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('b')
 });
-document.getElementById('NESaButton').addEventListener('touchdown', (e) => {
+document.getElementById('NESaButton').addEventListener('pointerdown', (e) => {
   runningrom.pressDown('a')
 });
-document.getElementById('NESupButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('up')
-});
-document.getElementById('NESleftButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('left')
-});
-document.getElementById('NESrightButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('right')
-});
-document.getElementById('NESdownButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('down')
-});
-document.getElementById('NESselectButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('select')
-});
-document.getElementById('NESstartButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('start')
-});
-document.getElementById('NESbButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('b')
-});
-document.getElementById('NESaButton').addEventListener('mousedown', (e) => {
-  runningrom.pressDown('a')
-});
-
-document.getElementById('NESupButton').addEventListener('touchup', (e) => {
+document.getElementById('NESupButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('up')
 });
-document.getElementById('NESleftButton').addEventListener('touchup', (e) => {
+document.getElementById('NESleftButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('left')
 });
-document.getElementById('NESrightButton').addEventListener('touchup', (e) => {
+document.getElementById('NESrightButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('right')
 });
-document.getElementById('NESdownButton').addEventListener('touchup', (e) => {
+document.getElementById('NESdownButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('down')
 });
-document.getElementById('NESselectButton').addEventListener('touchup', (e) => {
+document.getElementById('NESselectButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('select')
 });
-document.getElementById('NESstartButton').addEventListener('touchup', (e) => {
+document.getElementById('NESstartButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('start')
 });
-document.getElementById('NESbButton').addEventListener('touchup', (e) => {
+document.getElementById('NESbButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('b')
 });
-document.getElementById('NESaButton').addEventListener('touchup', (e) => {
-  runningrom.pressUp('a')
-});
-document.getElementById('NESupButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('up')
-});
-document.getElementById('NESleftButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('left')
-});
-document.getElementById('NESrightButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('right')
-});
-document.getElementById('NESdownButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('down')
-});
-document.getElementById('NESselectButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('select')
-});
-document.getElementById('NESstartButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('start')
-});
-document.getElementById('NESbButton').addEventListener('mouseup', (e) => {
-  runningrom.pressUp('b')
-});
-document.getElementById('NESaButton').addEventListener('mouseup', (e) => {
+document.getElementById('NESaButton').addEventListener('pointerup', (e) => {
   runningrom.pressUp('a')
 });
 
